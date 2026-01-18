@@ -1,0 +1,224 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Business Consulting{% endblock %}
+
+{% block extra_css %}
+<style>
+    .service-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        padding: 5px;
+    }
+
+    .service-image {
+        width: 100%;
+        max-width: 1000px;
+        height: 470px;
+        margin: 0 auto 40px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .service-content {
+        max-width:1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .service-type {
+        text-align: center;
+        color: #007bff;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+        /* Challenges & Solutions */
+        .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+
+    .service-description {
+        color:black;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .main-heading {
+            font-size: 2rem;
+        }
+
+        .service-image {
+            height: 300px;
+        }
+
+        .service-type {
+            font-size: 1.3rem;
+        }
+
+        .service-description {
+            font-size: 1rem;
+        }
+        .challenges-solutions {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="service-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">OEM</h1>
+
+        <!-- Large Image -->
+        <div class="service-image">
+            <img src="{% static 'appp/images/services/oem/oem_main.png' %}" alt="Business Consulting Services">
+        </div>
+
+        <div class="service-content">
+            <!-- Service Type -->
+            <!-- <h2 class="service-type">Strategic Business Solutions</h2> -->
+
+        <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+        <div class="challenges-solutions">
+            <div class="cs-box challenges">
+                <h3>Challenges</h3>
+                <ul>
+                    <li>Lack of reliable electronics manufacturing partners</li>
+                    <li>High MOQ requirements from large EMS players</li>
+                    <li>Inconsistent quality during early production runs</li>
+                    <li>Limited flexibility for design changes and iteration</li>
+                    <li>Difficulty managing suppliers, sourcing, and assembly under one roof</li>
+                </ul>
+            </div>
+
+            <div class="cs-box solutions">
+                <h3>Solutions</h3>
+                <ul>
+                    <li>PCB assembly (SMT & THT)</li>
+                    <li>Electronics box builds</li>
+                    <li>Cable harnessing & electromechanical assembly</li>
+                    <li>Enclosure integration and testing</li>
+                    <li>Functional testing, QA, and pilot production</li>
+                    <li>Low-to-medium volume manufacturing with scale-ready processes</li>
+                </ul>
+            </div>
+        </div>
+
+
+            <!-- Service Description -->
+            <div class="service-description">
+                <h3>Key Considerations for Box Build Project Success</h3>
+
+                <h4>Upfront Collaboration</h4>
+                <p>Early stage collaboration between the OEM and EMS partner is vital for avoiding issues downstream. Try to finalize key specifications upfront:</p>
+                <ul>
+                    <li>Industrial design – Enclosure material/finishing, aesthetics, branding</li>
+                    <li>Component selection – Review BOM for lead times, costs, obsolescence</li>
+                    <li>BOM optimization – Substitute parts for cost/availability</li>
+                    <li>DFM analysis – Design for ease of assembly and testing</li>
+                    <li>Manufacturing process – Process quality plan, test strategy</li>
+                    <li>Compliance standards – Safety, EMC/EMI, regulatory</li>
+                    <li>Project schedule – Timelines, production milestones</li>
+                </ul>
+                <p>Jointly developed plans and early prototype builds prevent delays and ensure requirements are met. Frequent design reviews and progress checks help keep the project on track.</p>
+
+                <h4>Quality Control Planning</h4>
+                <p>Create a robust quality plan covering:</p>
+                <ul>
+                    <li>Inspection points – In-process quality checks during key process steps</li>
+                    <li>Testing methods – Functional, environmental, reliability, safety tests</li>
+                    <li>Traceability – Part serialization, date codes, paperwork trail</li>
+                    <li>ESD protocols – Control programs, wrist straps, heel straps, mats</li>
+                    <li>Acceptance criteria – Quantifiable pass/fail metrics for inspections and tests</li>
+                    <li>Documentation – Standardized forms and checklists for operators</li>
+                    <li>Training – Operator training on test and inspection procedures</li>
+                    <li>Continuous improvement – Process capability analysis, control limits, corrective actions</li>
+                </ul>
+                <p>Attention to quality control from the very beginning reduces defects and prevents issues at the customer end.</p>
+
+                <h4>Manufacturing Process Development</h4>
+                <p>The assembly and test processes should be production-ready by the end of prototyping.</p>
+                <ul>
+                    <li>Workflow optimization – Optimize assembly steps for ergonomics and efficiency</li>
+                    <li>Automation feasibility – Assess options like automated screw driving</li>
+                    <li>Test optimization – Debug and validate test routines</li>
+                    <li>Process validation – Process capability studies and control limits</li>
+                    <li>Operator instructions – Create visual work instructions and guides</li>
+                    <li>Training – Train staff and audit process execution</li>
+                    <li>Fixture design – Ensure assembly and test fixtures represent end configuration</li>
+                </ul>
+                <p>Thorough process development eliminates inefficiencies and ensures a smooth production ramp up.</p>
+
+                <h4>Supply Chain Management</h4>
+                <p>Proactively manage procurement and suppliers:</p>
+                <ul>
+                    <li>Vendor selection – Assess supplier qualifications and capabilities. Get compliance certificates</li>
+                    <li>Dual sourcing – For critical components, find alternate suppliers to minimize risk</li>
+                    <li>Inventory planning – Based on demand forecasts and lead times, plan stocking levels</li>
+                    <li>Purchase orders – Ensure timely placement of part orders. Expedite orders if needed</li>
+                    <li>Stage suppliers – Localize suppliers close to production facility when possible</li>
+                    <li>Logistics – Optimize part shipment routes and modes. Consolidated shipments</li>
+                </ul>
+                <p>A resilient supply chain avoids part shortages delaying production. Careful inventory management also reduces working capital needs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  

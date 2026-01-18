@@ -1,0 +1,94 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Our Products{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="products-page">
+    <div class="container">
+        <h1 class="main-heading text-center mb-5">
+            Fire And Safety 
+        </h1>
+
+        <div class="row justify-content-center">
+
+            <!-- =====================
+                 Product Card 1
+            ====================== -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'fire_safety1' %}">
+                            <img
+                                src="{% static 'appp/images/products/fire_safety/antirob/antirob1.png' %}"
+                                alt="Anti Rob"
+                                class="img-fluid"
+                            >
+                        </a>
+                    </div>
+                    <div class="product-content text-center">
+                        <h3>
+                            <a href="{% url 'fire_safety1' %}">
+                                Anti Rob
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================
+                 Product Card 2
+            ====================== -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'fire_safety2' %}">
+                            <img
+                                src="{% static 'appp/images/products/fire_safety/firerobot/firerobot1.jpg' %}"
+                                alt="Fire Robot"
+                                class="img-fluid"
+                            >
+                        </a>
+                    </div>
+                    <div class="product-content text-center">
+                        <h3>
+                            <a href="{% url 'fire_safety2' %}">
+                                Fire Robot
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================
+                 Product Card 3
+            ====================== -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'fire_safety3' %}">
+                            <img
+                                src="{% static 'appp/images/products/fire_safety/ledvest/firerobot1.jpg' %}"
+                                alt="Led Vest"
+                                class="img-fluid"
+                            >
+                        </a>
+                    </div>
+                    <div class="product-content text-center">
+                        <h3>
+                            <a href="{% url 'fire_safety3' %}">
+                                Led Vest
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,621 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Enterprise Software{% endblock %}
+
+{% block extra_css %}
+<!-- Add Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    .product-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        padding: 5px;
+    }
+
+    .product-image {
+        width: 100%;
+        max-width: 1000px;
+        height: 600px;
+        margin: 0 auto 40px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .product-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .product-type {
+        text-align: center;
+        color: #007bff;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    /* Challenges & Solutions */
+    .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+
+
+    .product-description {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .main-heading {
+            font-size: 2rem;
+        }
+
+        .product-image {
+            height: 300px;
+        }
+
+        .product-type {
+            font-size: 1.3rem;
+        }
+
+        .product-description {
+            font-size: 1rem;
+        }
+        .challenges-solutions {
+    flex-direction: column;
+}
+    }
+
+    /* Thumbnail Gallery Styles */
+    .thumbnail-gallery {
+        max-width: 1000px;
+        margin: 0 auto 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .thumbnail {
+        width: 150px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .thumbnail:hover {
+        border-color: #007bff;
+        transform: translateY(-3px);
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .thumbnail.active {
+        border-color: #007bff;
+    }
+
+    .thumbnail-container {
+        text-align: center;
+    }
+
+    .thumbnail-label {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .pdf-download-section {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .pdf-icon {
+        font-size: 48px;
+        color: #dc3545;
+        margin-bottom: 15px;
+    }
+
+    .download-title {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .download-form, .otp-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .send-otp-btn, .verify-otp-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .send-otp-btn:hover, .verify-otp-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Update YouTube Video Section Styles */
+    .video-container {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 800px;  /* Reduced from 1000px */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-title {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="product-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">DC Compressor</h1>
+
+        <!-- Large Image -->
+        <div class="product-image">
+            <img id="mainImage" src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}" alt="DC Compressor">
+        </div>
+
+        <!-- Thumbnail Gallery -->
+        <div class="thumbnail-gallery">
+            <div class="thumbnail-container">
+                <div class="thumbnail active" data-image="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}">
+                    <img src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}" alt="Product View 1">
+                </div>
+                <div class="thumbnail-label">Full Image</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc1.png' %}">
+                    <img src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc1.png' %}" alt="Product View 2">
+                </div>
+                <div class="thumbnail-label">Right View</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc2.png' %}">
+                    <img src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc2.png' %}" alt="Product View 3">
+                </div>
+                <div class="thumbnail-label">Left View</div>   
+            </div>
+            
+        </div>
+
+        <!-- YouTube Video Section -->
+        <div class="video-container">
+            <h2 class="video-title">Product Demo Video</h2>
+            <div class="video-wrapper">
+                <video width="100%" height="300" controls>
+                    <source src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/v_dc_compressor.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="product-content">
+            <!-- Product Type -->
+            <h2 class="product-type">Advanced Business Software</h2>
+            <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+            <div class="challenges-solutions">
+                <div class="cs-box challenges">
+                    <h3>Challenges</h3>
+                    <ul>
+                        <li>Consume high power</li>
+                        <li>Require inverters (leading to energy losses)</li>
+                        <li>Are unsuitable for battery-based or vehicle systems</li>
+                        <li>Offer limited control and poor efficiency at variable loads</li>
+
+
+                    </ul>
+                </div>
+
+                <div class="cs-box solutions">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li>Stable cooling</li>
+                        <li>Long battery life</li>
+                        <li>Quiet and maintenance-free operation</li>
+                        <li>Smart control compatibility</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <p>
+                    Refrigeration system is process as they perform Cooling or Heating to maintain the temperature at a desired value. The refrigeration cycle consists of heat exchange, compression and expansion with a refrigerant flowing through the units within the cycle. A refrigeration system has four major components the compressor is the core of the system for compressing the refrigerant gas to change its state and absorb heat, the condenser converts the gaseous refrigerant back into a liquid, the expansion device controls the flow of refrigerant into the evaporator, and evaporator absorbs heat from the space being cooled, causing the refrigerant to boil.
+                
+                </p>
+                <p>
+                This BD25HC condensing unit features a compressor, condenser, fan, filter, and controller fixed on the baseplate and with an alligator clip power cord for power supply connection. It has all the necessary accessories for a condensing unit, to make the complete Refrigeration system you have to add the capillary tube, evaporator, and refrigerant that need to be matched as per the requirement. This condensing unit operates on dual voltage, i.e. DC 12V and 24V power input systems and is compatible with R134A refrigerant. It has a Cooling Capacity of 252 BTU (74W) and is suitable for small-size refrigerators and freezers with 100L capacity. This DIY Kit is a comprehensive set of parts that makes it easy to assemble the system.
+                </p>
+                
+      
+    <h1>WARNING:</h1>
+    <ul>
+        <li><strong>Trained Personnel Only:</strong> Only qualified with the necessary knowledge and training should install, service, or repair refrigeration compressors.</li>
+        <li><strong>Explosion Hazard:</strong> Improper handling of the compressor or refrigerants can lead to explosions. Follow all safety procedures to minimize this risk.</li>
+        <li><strong>Asphyxiation:</strong> Refrigerants can displace oxygen, leading to asphyxiation in enclosed spaces. Work in well-ventilated areas.</li>
+        <li><strong>Frostbite:</strong> Contact with refrigerant or cold components can cause frostbite. Wear appropriate protective clothing.</li>
+    </ul>
+    <h2>Always follow the Safety instructions and warnings to ensure safe and proper use of any product or tool.</h2>
+    
+    <h3>Safety instructions:</h3>
+    <h4>Refrigeration Unit Handling:</h4>
+    <ul>
+        <li>High Pressure: Compressors operate under high pressure.</li>
+        <li>Never dry run the compressors.</li>
+        <li>Do not attempt to adjust or tamper with pressure settings unless qualified.</li>
+        <li>Never use compressed air to test the system, as this can cause an explosion.</li>
+    </ul>
+    
+    <h4>Refrigerant Handling:</h4>
+    <ul>
+        <li>Refrigerants can be flammable, toxic, or cause asphyxiation. Handle them with care in well-ventilated areas.</li>
+        <li>Use appropriate safety equipment, such as gloves and eye protection, when handling refrigerants.</li>
+        <li>Follow proper procedures for recovering and recycling refrigerants.</li>
+    </ul>
+    
+    <h4>Electrical Safety:</h4>
+    <ul>
+        <li>Always disconnect the power supply before working on the compressor.</li>
+    </ul>
+    
+    <h4>Mechanical Safety:</h4>
+    <ul>
+        <li>Wear appropriate safety glasses and gloves when working with mechanical components.</li>
+        <li>Be aware of moving parts, such as fans that can cause injury.</li>
+    </ul>
+    
+    <h2>Downloads:</h2>
+    <p><strong>BD25HC R134A Compressor_DataSheet</strong></p>
+    
+    <h2>Features:</h2>
+    <ul>
+        <li>Adapts to dual voltage, i.e. DC 12V and 24V power input systems.</li>
+        <li>Cooling Capacity of 252 BTU (74W).</li>
+        <li>Efficient Cooling Performance with 1.2COP.</li>
+        <li>Working volume up to 2.5cm³.</li>
+        <li>Suits for prototyping projects, small size refrigerators and freezers within 100L capacity.</li>
+        <li>Comes with a temperature control panel and power cord with an alligator clip.</li>
+        <li>Versatile Application and Compatibility.</li>
+        <li>Durable and User-Friendly Design.</li>
+    </ul>
+    
+    <h2>Cooling Capacity:</h2>
+    <ul>
+        <li>RPM is 2000, cooling capacity is 45W , 38.7 Kcal/h ,153.5 btu/h, Efficiency COP is 1.25 w/w, electric current is 2.9/1.4, input Power is 36W.</li>
+        <li>RPM is 2500, cooling capacity is 55W , 47.3 Kcal/h ,187.7 btu/h, Efficiency COP is 1.25 w/w, electric current is 3.5/1.7, input Power is 44W.</li>
+        <li>RPM is 3000, cooling capacity is 64W , 55 Kcal/h ,218.4 btu/h, Efficiency COP is 1.25 w/w, electric current is 4.1/2.0, input Power is 51W.</li>
+        <li>RPM is 3500, cooling capacity is 74W , 63.6 Kcal/h ,252.5 btu/h, Efficiency COP is 1.25 w/w, electric current is 4.9/2.4, input Power is 59W.</li>
+    </ul>
+    
+    <h2>Applications:</h2>
+    <ul>
+        <li>For refrigerators Within 100 litres, freezers, fridges, water coolers, ice machines, etc and prototyping projects.</li>
+    </ul>
+    
+    <h2>Package Includes:</h2>
+    <ul>
+        <li>1 x 12-24VDC 75W BD25HC R134A Compressor Small Condensing Unit With Temperature Controller DIY KIT.</li>
+    </ul>
+    
+    <h2>Specifications:</h2>
+    <ul>
+        <li><strong>Product:</strong> Refrigeration Condensing Unit.</li>
+        <li><strong>Model:</strong> BD25HC.</li>
+        <li><strong>Digital Thermostat Controller:</strong></li>
+        <ul>
+            <li>Voltage range: DC 12-24V.</li>
+            <li>Operating current: 0.1A.</li>
+            <li>Door Lamp Function: Door lamp voltage follows input voltage.</li>
+            <li>Temperature probe accuracy: ±1℃.</li>
+        </ul>
+        <li><strong>Operating ambient temperature:</strong> -10℃～60℃.</li>
+        <li><strong>Dimensions (L*W*H):</strong></li>
+        <ul>
+            <li>Fan: 120*120*25mm.</li>
+            <li>Condensing Unit: 330*180*165mm.</li>
+        </ul>
+        <li><strong>Compressor:</strong></li>
+        <ul>
+            <li>Model: BD25H.</li>
+            <li>Operating voltage: 12/24V DC.</li>
+            <li>Maximum input voltage for DC 12V: 17V.</li>
+            <li>Maximum input voltage for DC 24V: 31.5V.</li>
+            <li>Working Back Pressure: Low Back Pressure (L.B.P).</li>
+            <li>Cooling status: natural cooling / air-cooled.</li>
+            <li>Throttling device: capillary tube.</li>
+            <li>Motor type: BLDC.</li>
+            <li>Ambient temperature: 0～43℃.</li>
+            <li>Evaporating temperature: -35～-10℃.</li>
+            <li>Operating voltage range: 9.6～17/21.3～31.5V.</li>
+            <li>Max. exhaust pressure: 1.86 MPa(abs).</li>
+            <li>Max. condensing temperature: 65℃.</li>
+            <li>Max. winding temperature: 130℃.</li>
+            <li>Max. case temperature: 95℃.</li>
+            <li>Max. exhaust temperature: 120℃.</li>
+            <li>Starting performance: 12/24V [0.5/0.5MPa(abs)].</li>
+            <li>Minimum case pressure: 35 bar.</li>
+            <li>Oil type: Ester oil.</li>
+            <li>Oil filling volume: 150ml±10ml.</li>
+            <li>Diameter of suction pipe (inner diameter): Φ6.2±0.1 mm.</li>
+            <li>Exhaust pipe diameter (inner diameter): Φ5.0±0.1 mm.</li>
+            <li>Process pipe diameter (inner diameter): Φ6.2±0.1 mm.</li>
+            <li>Compressor noise: ≤40dB(A).</li>
+            <li>Vibration: 0.6m/s².</li>
+            <li>Working volume: 2.5cm³.</li>
+        </ul>
+    </ul>
+
+            </div>
+
+            <!-- Update the PDF Download Section -->
+            <div class="pdf-download-section">
+                <i class="fas fa-file-pdf pdf-icon"></i>
+                <h3 class="download-title">
+                    <i class="fas fa-download" style="font-size: 24px;"></i>
+                    Download DC Compressor Brochure
+                </h3>
+                
+                <!-- Initial Download Form -->
+                <form id="downloadForm" class="download-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="send-otp-btn">Download PDF</button>
+                </form>
+
+                <!-- OTP Verification Form (Initially Hidden) -->
+                <form id="otpForm" class="otp-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="otp">Enter OTP</label>
+                        <input type="text" id="otp" name="otp" required>
+                    </div>
+                    <button type="submit" class="verify-otp-btn">Verify & Download</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    
+document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+    // Handle hover preview
+    thumbnail.addEventListener('mouseenter', function() {
+        const imagePath = this.dataset.image;
+        document.getElementById('mainImage').src = imagePath;
+    });
+
+    // Handle click for permanent selection
+    thumbnail.addEventListener('click', function() {
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        this.classList.add('active');
+        const imagePath = this.dataset.image;
+        document.getElementById('mainImage').src = imagePath;  // Update main image on click
+    });
+});
+
+// Add click event listener to document
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is not within the thumbnail gallery
+    if (!event.target.closest('.thumbnail-gallery')) {
+        // Reset main image to cover image
+        document.getElementById('mainImage').src = "{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}";
+        // Remove active class from all thumbnails
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+    }
+});
+
+document.querySelector('.thumbnail-gallery').addEventListener('mouseleave', function() {
+    const activeThumb = document.querySelector('.thumbnail.active');
+    if (activeThumb) {
+        const defaultImage = activeThumb.dataset.image;
+        document.getElementById('mainImage').src = defaultImage;
+    } else {
+        document.getElementById('mainImage').src = "{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}";
+    }
+});
+
+
+document.getElementById('downloadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // Send request to backend to generate and send OTP
+    fetch('/send-otp/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ name, email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('downloadForm').style.display = 'none';
+            document.getElementById('otpForm').style.display = 'block';
+            alert('OTP has been sent to your email!');
+        } else {
+            alert('Error sending OTP. Please try again.');
+        }
+    });
+});
+
+document.getElementById('otpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const otp = document.getElementById('otp').value;
+    const email = document.getElementById('email').value;
+
+    // Verify OTP and trigger download
+    fetch('/verify-otp/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ 
+            email, 
+            otp,
+            product_type: 'dc_compressor'  // Add product type identifier
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = `/download-pdf/?type=${data.product_type}`;  // Add product type to URL
+        } else {
+            alert('Invalid OTP. Please try again.');
+        }
+    });
+});
+
+// Function to get CSRF token from cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock %}  

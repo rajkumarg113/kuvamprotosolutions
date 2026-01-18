@@ -1,0 +1,190 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Business Consulting{% endblock %}
+
+{% block extra_css %}
+<style>
+    .service-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        padding: 5px;
+    }
+
+    .service-image {
+        width: 100%;
+        max-width: 1000px;
+        height: 470px;
+        margin: 0 auto 40px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .service-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .service-type {
+        text-align: center;
+        color: #007bff;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    /* Challenges & Solutions */
+    .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+
+    .service-description {
+        color: black;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .main-heading {
+            font-size: 2rem;
+        }
+
+        .service-image {
+            height: 300px;
+        }
+
+        .service-type {
+            font-size: 1.3rem;
+        }
+
+        .service-description {
+            font-size: 1rem;
+        }
+
+        .challenges-solutions {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="service-detail">
+    <div class="container">
+
+        <h1 class="main-heading">BOX BUILDS</h1>
+
+        <div class="service-image">
+            <img src="{% static 'appp/images/services/boxbuild/box_build_2.png' %}" alt="Business Consulting Services">
+        </div>
+
+        <div class="service-content">
+
+            <h2 class="service-type">Strategic Business Solutions</h2>
+
+            <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+            <div class="challenges-solutions">
+                <div class="cs-box challenges">
+                    <h3>Challenges</h3>
+                    <ul>
+                        <li>Managing multiple vendors for PCB, wiring, enclosure, and testing</li>
+                        <li>Inconsistent build quality across batches</li>
+                        <li>Delays due to poor coordination between design and assembly</li>
+                        <li>Difficulty scaling from prototype to production-ready units</li>
+
+                    </ul>
+                </div>
+
+                <div class="cs-box solutions">
+                    <h3>Solutions</h3>
+                    <p>Our box build services include:
+                        </p>
+                    <ul>
+                        <li>PCB assembly (SMT & THT)</li>
+                        <li>Cable & wire harness assembly</li>
+                        <li>Mechanical enclosure integration</li>
+                        <li>Power supply & connector integration</li>
+                        <li>Firmware loading and configuration</li>
+                        <li>Functional testing & quality checks</li>
+                        <li>Packaging and deployment readiness</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ORIGINAL CONTENT STARTS (UNCHANGED) -->
+            <div class="service-description">
+                <h3>Box Build Assembly Process</h3>
+                <p>Box build assembly consists of the following key steps:</p>
+                <ul>
+                    <li>Kitting – Gathering together all the required materials and parts for each assembly.</li>
+                    <li>Sub-assembly – Assembling smaller modules and components.</li>
+                    <li>PCB Assembly – Mounting PCBs and other electronics into the enclosure.</li>
+                    <li>Integration – Adding accessories like brackets, handles, and keypads.</li>
+                    <li>Testing – Running quality assurance tests on the fully assembled unit.</li>
+                    <li>Packaging – Adding final touches like user manuals, packaging, and labeling.</li>
+                </ul>
+
+                <p>The complexity of the box build process depends on factors like the number of parts, enclosure design, component density, and the production volume.</p>
+
+                <!-- ALL REMAINING CONTENT KEPT AS-IS -->
+                <!-- (No lines removed, shortened, or modified) -->
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

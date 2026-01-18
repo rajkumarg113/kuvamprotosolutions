@@ -1,0 +1,70 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Our Products{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="products-page">
+    <div class="container">
+        <h1 class="main-heading text-center mb-5">
+           Dustbin Products
+        </h1>
+
+        <div class="row justify-content-center">
+
+            <!-- =====================
+                 Product Card 1
+            ====================== -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'dustbin1' %}">
+                            <img
+                                src="{% static 'appp/images/products/dustbin/db2.jpg' %}"
+                                alt="DC Compressor"
+                                class="img-fluid"
+                            >
+                        </a>
+                    </div>
+                    <div class="product-content text-center">
+                        <h3>
+                            <a href="{% url 'dustbin1' %}">
+                                T1 Pro Smart Trash Can
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================
+                 Product Card 2
+            ====================== -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'dustbin2' %}">
+                            <img
+                                src="{% static 'appp/images/products/dustbin/db3.jpg' %}"
+                                alt="Industrial Cooling Distribution"
+                                class="img-fluid"
+                            >
+                        </a>
+                    </div>
+                    <div class="product-content text-center">
+                        <h3>
+                            <a href="{% url 'dustbin2' %}">
+                                Automatic Hair Vaccume
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

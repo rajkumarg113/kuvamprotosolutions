@@ -1,0 +1,477 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Injection Moulding{% endblock %}
+
+{% block extra_css %}
+<style>
+    .service-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: 10px auto 50px;
+        padding: 1px;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Cover image styles */
+    .cover-image-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 50px;
+        padding: 0 20px;
+    }
+
+    .cover-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+     /* Challenges & Solutions */
+     .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+   
+
+    /* Type section styles */
+    .mould-type {
+        margin-bottom: 50px;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .type-heading {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #007bff;
+    }
+
+    /* Image and description layout */
+    .content-wrapper {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .image-wrapper {
+        flex: 0 0 45%;
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Description Styles */
+    .description {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .description h3 {
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .description h4 {
+        color: #444;
+        font-size: 1.2rem;
+        margin: 20px 0 10px;
+    }
+
+    .description p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .description ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 15px 0;
+    }
+
+    .description ul li {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .description ul li:before {
+        content: "•";
+        color: #007bff;
+        position: absolute;
+        left: 0;
+    }
+
+    .description strong {
+        color: #444;
+        font-weight: 600;
+    }
+
+    /* Two image layout */
+    .two-images {
+        display: flex;
+        gap: 20px;
+    }
+
+    .two-images .image-wrapper {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    /* Content wrapper variations */
+    .content-wrapper.right-aligned {
+        flex-direction: row-reverse;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .cover-image {
+            height: 250px;
+        }
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        .image-wrapper {
+            flex: 0 0 100%;
+        }
+
+        .two-images {
+            flex-direction: column;
+        }
+
+        .two-images .image-wrapper {
+            flex: 0 0 100%;
+        }
+
+        .content-wrapper.right-aligned {
+            flex-direction: column;
+        }
+
+        .description {
+            padding: 15px 0;
+        }
+        
+        .description h3 {
+            font-size: 1.3rem;
+        }
+
+        .description h4 {
+            font-size: 1.1rem;
+        }
+
+        .description p {
+            font-size: 1rem;
+        }
+
+        .description ul li {
+            font-size: 1rem;
+        }
+        
+        .challenges-solutions {
+            flex-direction: column;
+        }
+    
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="service-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">Injection Moulding</h1>
+
+        <!-- Cover Image -->
+        <div class="cover-image-container">
+            <img src="{% static 'appp/images/services/injectionmould/injection_moulding_cover.jpg' %}" alt="Injection Moulding Cover" class="cover-image">
+        </div>
+
+        <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+        <div class="challenges-solutions">
+            <div class="cs-box challenges">
+                <h3>Challenges</h3>
+                <ul>
+                  <p>Manufacturers and startups often struggle to move from prototype 
+                    to mass production due to high tooling costs, inconsistent part quality, 
+                    long lead times, and limited flexibility in design changes. 
+                    Achieving repeatability, precision, and cost efficiency—especially for 
+                    complex or high-volume plastic components—remains a major challenge.</p>
+                </ul>
+            </div>
+
+            <div class="cs-box solutions">
+                <h3>Solutions</h3>
+                <ul>
+                    <li>Custom mould design &amp; DFM (Design for Manufacturability)</li>
+                    <li>High-precision plastic injection moulding</li>
+                    <li>Prototype, pilot, and volume production</li>
+                    <li>Material selection support (ABS, PP, PC, Nylon, etc.)</li>
+                    <li>Post-moulding finishing, assembly, and quality inspection</li>
+                    
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="mould-details">
+            <h2>What is Injection Molding?</h2>
+            <p>
+                Injection molding is a method to obtain molded products by injecting plastic materials molten by heat into a mold, and then cooling and solidifying them.
+The method is suitable for the mass production of products with complicated shapes, and takes a large part in the area of plastic processing.
+           </p>
+
+            <h3>Injection Molding Machine</h3>
+            <p>
+                Injection molding machine is divided into 2 units i.e. a clamping unit and an injection unit.
+The functions of the clamping unit are opening and closing a die, and the ejection of products. There are 2 types of clamping methods, namely the toggle type shown in the figure below and the straight-hydraulic type in which a mold is directly opened and closed with a hydraulic cylinder.
+The functions of the injection unit are to melt plastic by heat and then to inject molten plastic into a mold.
+The screw is rotated to melt plastic introduced from the hopper and to accumulate molten plastic in front of the screw ( to be called metering ) . After the required amount of molten plastic is accumulated, injection process is stared.
+While molten plastic is flowing in a mold, the machine controls the moving speed of the screw, or injection speed. On the other hand, it controls dwell pressure after molten plastic fills out cavities.
+The position of change from speed control to pressure control is set at the point where either screw position or injection pressure reaches a certain fixed value.
+
+            </p>
+            
+
+            <h3>Mold</h3>
+            <p>
+                A mold is a hollow metal block into which molten plastic is injected to from a certain fixed shape. Although they are not illustrated in the figure shown below, actually there are many holes drilled in the block for temperature control by means of hot water, oil or heaters.
+Molten plastic flows into a mold through a sprue and fills cavities by way of runners and gates. Then, the mold is opened after cooling process and the ejector rod of the injection molding machine pushes the ejector plate of the mold to further eject moldings.
+            </p>
+
+            <h3>Molding Process</h3>
+            <p>
+                A molding consists of a sprue to introduce molten resin, a runner to lead it to cavities, and products. Since obtaining only one product by one shot is very inefficient, a mold is usually designed to have multiple cavities connected with a runner so that many products can be made by one shot.
+If the length of the runner to each cavity is different in this case, the cavities may not be filled simultaneously, so that dimensions, appearances or properties of the moldings are often different cavity by cavity. Therefore the runner is usually designed so as to have the same length from the sprue to each cavity.
+            </p>
+           
+
+            <h3>Use of Reprocessed Materials</h3>
+            <p>
+                Sprues and runners among moldings are not products. These portions are sometimes discarded, but in other cases they are finely reground and reused as materials for molding. These materials are called reprocessed materials.
+            </p>
+            <p>
+                Reprocessed materials are not solely used as materials for molding but usually used after blending with virgin pellets, since there is possibility of deterioration in various characteristics of the plastics because of the initial molding process. The maximum allowable limit for the ratio of reprocessed materials is about 30 %, because too high ratio of reprocessed materials may spoil the original properties of the plastics used.            
+            </p>
+            <p>
+                For the properties when reprocessed materials are used, please refer to "reprocessing capability" in the plastic data base
+            </p>
+
+            <h3>Molding Conditions</h3>
+            <p>
+                Molding condition means cylinder temperature, injection speed, mold temperature etc. set in a molding machine to obtain required moldings, and the number of combinations of conditions is innumerable. Depending on the conditions selected, the appearances, dimensions, and mechanical properties of the molded products change considerably.            
+            </p>
+            <p>
+                Therefore, well-tried technology and experience are required to select the most suitable molding conditions.            
+            </p>
+            <p>
+                The standard molding conditions for our materials are shown below. Please click the mouse at the following names of plastics.
+            </p>
+        </div>
+
+        <!-- Type 1: Insert Moulding -->
+        <div class="mould-type">
+            <h2 class="type-heading">Insert Moulding</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/insert_moulding.png' %}" alt="Insert Moulding">
+                </div>
+                <div class="description">
+                    <p>Insert injection molding is the process of molding or forming plastic parts around other, non-plastic parts, or inserts. The inserted component is most commonly a simple object, such as a thread or rod, but in some cases, inserts can be as complex as a battery or motor.</p>
+                    <p>Moreover, Insert Molding combines metal and plastics, or multiple combinations of materials and components into a single unit. The process makes use of engineering plastics for improved wear resistance, tensile strength and weight reduction as well as using metallic materials for strength and conductivity. </p>
+                    <ul>
+                        <li>Improved wear resistance</li>
+                        <li>Better tensile strength</li>
+                        <li>Weight reduction</li>
+                        <li>Using metallic materials for strength and conductivity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 2: Over Moulding -->
+        <div class="mould-type">
+            <h2 class="type-heading">Over Moulding</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper two-images">
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/injectionmould/over_moulding1.png' %}" alt="Compound Die View 1">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/injectionmould/over_moulding2.png' %}" alt="Compound Die View 2">
+                    </div>
+                </div>
+                <div class="description">
+                    <p>Compound dies perform two or more cutting operations at a single station with a single stroke of the press. These dies are used when high accuracy between features is required.</p>
+                    <p>The main advantage of compound dies is that they produce parts with very close tolerances between cut features since all cutting is done in one operation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 3: Roto Moulding -->
+        <div class="mould-type">
+            <h2 class="type-heading">Roto Moulding</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/roto_moulding.png' %}" alt="Roto Moulding">
+                </div>
+                <div class="description">
+                    <h3>What is Roto molding process?</h3>
+                    <p>The rotational molding process is quite simple: A hollow mold is filled with powdered plastic resin. The mold begins rotating bi-axially and is transferred into an oven. The mold continues to rotate as the resin melts and coats the walls of the mold. The mold is cooled until the resin hardens into the desired shape. 
+                    </p>
+                    
+                    <h4>Key Benefits:</h4>
+                    <ul>
+                        <li><strong>High-Quality and Durable Products:</strong> Undoubtedly, rotomolding creates high-quality and durable products due to the uniform and consistent thickness of the plastic material. The roto-molding process results in strong, resilient products resistant to damage.</li>
+                        <li><strong>Versatile:</strong> Rotomolding produces various products, from complex industrial parts to simple toys. Fortunately, this versatility means that roto-molding is for multiple applications, including consumer goods, agriculture, and transportation.</li>
+                        <li><strong>Cost-Effective:</strong> Certainly, rotomolding is a cost-effective plastic molding technique. The process requires minimal tooling and can produce large quantities of products in a single cycle. This results in lower costs and increased efficiency.</li>
+                        <li><strong>Environmental Friendly:</strong>Rotomolding is an environmentally friendly plastic molding technique. The process produces minimal waste, and the products made are recyclable.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 4: Rapid Moulding -->
+        <div class="mould-type">
+            <h2 class="type-heading">Rapid Moulding</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/rapid_moulding.png' %}" alt="Rapid Moulding">
+                </div>
+                <div class="description">
+                    <p>Rapid injection molding method is revolutionizing how products come to life, blending efficiency and speed with engineering. This process makes it possible to manufacture many durable consumer and industrial items cheaper than everything else. It produces around 32% of plastics by weight. Rapid injection molding is a type of injection molding designed to produce parts quickly and efficiently, bridging the gap between initial prototypes and mass production. </p>
+                    
+                    <p>It is exceptionally suited for generating anywhere from a few units to 10,000 parts within a matter of weeks. It embodies the intersection of speed and accuracy, making it a go-to choice for companies across various industries.</p>
+                    
+                    <h4>Advantages:</h4>
+                    <p>Rapid molding or quick molds are a great manufacturing solution for injection-molded parts that meet certain conditions.</p>
+                    <ul>
+                        <li><strong>Parts Needed Fast:</strong> When turnaround time is essential, rapid injection molding can deliver parts quickly.</li>
+                        <li><strong>Low Production Numbers:</strong> The overall production run will be small. Quick molds are not as durable and will not stand up to extended use. Small production runs will also help ensure delivery on an enhanced timetable.</li>
+                        <li><strong>Design Simplicity:</strong>Rapid molding will benefit from a simplistic design. This will speed up the mold making process and help keep the project on schedule.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 5: Blow Moulding Machine -->
+        <div class="mould-type">
+            <h2 class="type-heading">Blow Moulding Machine</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/blow_moulding_machine.png' %}" alt="Blow Moulding Machine">
+                </div>
+                <div class="description">
+                    <p>This process can be used to manufacture plastic products. The process involves heating a plastic tube (known as a preform or parison) to its melting point and then putting that into the cavity of a mold.
+                    </p>
+                    <p>
+                        This process can be used to manufacture plastic products. The process involves heating a plastic tube (known as a preform or parison) to its melting point and then putting that into the cavity of a mold.
+                    </p>
+                    
+                    <h4>Blow molding is a manufacturing process that produces hollow plastic objects using air pressure. It has several advantages, including: </h4>
+                    <ul>
+                        <li><strong>High production rates:</strong> Blow molding can produce large quantities of products in a short amount of time.</li>
+                        <li><strong>Low tooling costs:</strong> Blow molding has low costs for tools and dies.</li>
+                        <li><strong>Automated production:</strong> Blow molding has low costs for tools and dies.</li>
+                        <li><strong>High product variety:</strong> Blow molding can produce a variety of products, including containers like milk jugs and soda bottles. </li>
+                        <li><strong>Ability to mold complex parts:</strong> Blow molding can produce complex parts, and handles can be incorporated into the design. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 6: Vertical Injection Moulding -->
+        <div class="mould-type">
+            <h2 class="type-heading">Vertical Injection Moulding</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/vertical_injection_moulding.png' %}" alt="Vertical Injection Moulding">
+                </div>
+                <div class="description">
+                    <p>Vertical injection molding (VIM) is a production method used to produce plastic parts through vertical injection molding machines designed specifically to operate vertically. This process can be seen by clamping unit movement and injection unit injection movement – two key features of VIM that make this a successful method.
+                    </p>
+                    <p>
+                        Vertical injection molding uses plastic pellets melted and injected into mold cavities to form parts, then solidifies to take shape as expected by the mold cavity. This process provides several advantages over                     
+                    </p>
+                    <h4>Key Advantages:</h4>
+                    <ul>
+                        <li><strong>Enhanced accuracy and consistency:</strong> Better mold alignment for precise part dimensions</li>
+                        <li><strong>Improved part quality:</strong> Better handling of complex designs</li>
+                        <li><strong>Efficient insert molding:</strong> Easy insertion of parts with reduced misalignment risk</li>
+                        <li><strong>Streamlined production:</strong> More efficient workflow for high-volume production</li>
+                        <li><strong>Greater visibility:</strong> Better visual access for quality checks</li>
+                        <li><strong>Reduced material waste:</strong> Precise control over the injection process</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/injectionmould/desktop_vertical_machine.png' %}" alt="Insert Moulding">
+                </div>
+                <div class="description">
+                    <h3 style="text-align: center;margin-top: 180px;">Desktop Vertical Machine</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  

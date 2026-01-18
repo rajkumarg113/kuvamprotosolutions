@@ -1,0 +1,114 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Our Products{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="products-page">
+    <div class="container">
+        <h1 class="main-heading">Our Products</h1>
+        
+        <div class="row">
+            <!-- Product Card 1 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'refrigration_thermal' %}">
+                            <img src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}" alt="Regrigation and Thermal Solutions">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'refrigration_thermal' %}">Refrigration</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'dustbin_prod' %}">
+                            <img src="{% static 'appp/images/products/dustbin/db1.jpg' %}" alt="DustBin">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'dustbin_prod' %}">DustBin</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'inspection_duct_crawler' %}">
+                            <img src="{% static 'appp/images/products/inspection_duct_crawler/home1.png' %}" alt="Inspection Dust Crawler">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'inspection_duct_crawler' %}">Inspection Dust Crawler</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'intrusion_alarm_system' %}">
+                            <img src="{% static 'appp/images/products/intrusion_alarm/intro_main.jpeg' %}" alt="Intrusion Alarm System">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'intrusion_alarm_system' %}">Intrusion Alarm System</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'fire_and_safety' %}">
+                            <img src="{% static 'appp/images/products/fire_safety/firerobot/firerobot1.jpg' %}" alt="Fire and Safety">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'fire_and_safety' %}">Fire and Safety</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+              <!-- Product Card 6 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'rugged_display' %}">
+                            <img src="{% static 'appp/images/service.jpg' %}">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'rugged_display' %}">Coming Soon</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

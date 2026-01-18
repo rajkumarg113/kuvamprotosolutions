@@ -1,0 +1,36 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Our Products{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="products-page">
+    <div class="container">
+        <h1 class="main-heading">Refrigration</h1>
+        
+        <div class="row">
+            <!-- Product Card 1 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="{% url 'dc_compressor' %}">
+                            <img src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/dc_main.png' %}" alt="Regrigation and Thermal Solutions">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3>
+                            <a href="{% url 'dc_compressor' %}">DC Compressor</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

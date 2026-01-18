@@ -1,0 +1,196 @@
+{% load static %}
+
+<style>
+     .company-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #212529;
+        margin-left: 15px;
+        line-height: 1.2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .company-first-line {
+        margin-bottom: 4px;
+    }
+
+    .company-second-line {
+        font-size: 1.3rem;  /* Slightly smaller text for second line */
+    }
+
+    /* Make company name responsive */
+    @media (max-width: 768px) {
+        .company-name {
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        .company-second-line {
+            font-size: 1.1rem;
+        }
+    }
+    .navbar-brand {
+        margin: 0;  /* Remove default margin */
+        line-height: 0;  /* Reduce line height */
+    }
+
+    .navbar-brand img {
+        max-height: 120px;
+        width: auto;
+        transition: transform 0.3s ease;
+        padding: 2px 0;  /* Reduced padding from 5px to 2px */
+    }
+    
+    .navbar-brand img:hover {
+        transform: scale(1.05);
+    }
+    
+    .navbar {
+        padding: 0;
+        min-height: auto;
+        background: linear-gradient(to right, #e8eaed, #f8f9fa, #e8eaed) !important;  /* Subtle gradient */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Update text color for better visibility on white background */
+    .nav-link {
+        color: #212529 !important;  /* Dark gray text */
+        padding: 0.25rem 1rem !important;  /* Reduced vertical padding */
+        line-height: 1.2;  /* Reduced line height */
+        font-weight: 500;  /* Slightly bolder text */
+    }
+
+    .nav-link:hover {
+        color: #000000 !important;  /* Black on hover */
+    }
+
+    .navbar-nav {
+        align-items: center;
+        margin-left: 5rem;
+    }
+
+    /* Adjust toggle button position */
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        margin: 0.25rem 0;
+    }
+
+    /* Add consistent container width */
+    .navbar .container {
+        max-width: 1300px !important;  /* Force consistent width */
+        width: 100%;
+        margin: 0 auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Override any other container styles */
+    .services-page .container,
+    .products-page .container {
+        max-width: 945px;  /* Keep service/product cards container width */
+    }
+
+    @media (max-width: 1366px) {
+        .navbar .container {
+            max-width: 1200px !important;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .navbar .container {
+            max-width: 960px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar .container {
+            max-width: 720px !important;
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f8f9fa;">
+    <div class="container">
+        <a class="navbar-brand p-0 d-flex align-items-center" href="{% url 'home' %}">
+            <img src="{% static 'appp/images/logo.png' %}" alt="Company Logo" height="120">
+            <div class="company-name">
+                <span class="company-first-line">Kuvam Proto Solutions</span>
+                
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active fs-5" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="{% url 'about' %}">About us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services 
+                    </a>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'boxbuild' %}">Box Builds</a>
+                                <a class="dropdown-item" href="{% url 'contractmanuf' %}">Contract Manufacturing</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'injectionmould' %}">Injection Moulding</a>
+                                <a class="dropdown-item" href="{% url 'diemould' %}">Die Moulding</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'prototyping' %}">Prototyping</a>
+                                <a class="dropdown-item" href="{% url 'oem' %}">OEM</a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item see-more" href="{% url 'services' %}">See All Services →</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Our Solutions 
+                    </a>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'refrigration_thermal' %}">Refrigration & Thermal</a>
+                                <a class="dropdown-item" href="{% url 'intrusion_alarm_system' %}">Intrusion Alarm System</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'dustbin_prod' %}">Dustbin</a>
+                                <a class="dropdown-item" href="{% url 'inspection_duct_crawler' %}">Inspection Duct Crawler</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="dropdown-item" href="{% url 'fire_and_safety' %}">Fire and Safety</a>
+                                <a class="dropdown-item" href="{% url 'rugged_display' %}">Rugged Display</a>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item see-more" href="{% url 'products' %}">See All Solutions →</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="{% url 'contact' %}">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

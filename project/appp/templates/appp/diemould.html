@@ -1,0 +1,296 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Die Moulding Manufacturing{% endblock %}
+
+{% block extra_css %}
+<style>
+    .service-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 80px;
+    }
+       /* Challenges & Solutions */
+       .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+
+
+    /* Type section styles */
+    .mould-type {
+        margin-bottom: 50px;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .type-heading {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #007bff;
+    }
+
+    /* Image and description layout */
+    .content-wrapper {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .image-wrapper {
+        flex: 0 0 45%;
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .description {
+        flex: 1;
+    }
+
+    .description p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    /* Two image layout */
+    .two-images {
+        display: flex;
+        gap: 20px;
+    }
+
+    .two-images .image-wrapper {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        .image-wrapper {
+            flex: 0 0 100%;
+        }
+
+        .two-images {
+            flex-direction: column;
+        }
+
+        .two-images .image-wrapper {
+            flex: 0 0 100%;
+        }
+    }
+
+    /* Add this new style for right-aligned content */
+    .content-wrapper.right-aligned {
+        flex-direction: row-reverse;
+    }
+
+    @media (max-width: 768px) {
+        .content-wrapper, 
+        .content-wrapper.right-aligned {
+            flex-direction: column;
+        }
+        .challenges-solutions {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="service-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">Die Moulding Manufacturing</h1>
+
+        <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+        <div class="challenges-solutions">
+            <div class="cs-box challenges">
+                <h3>Challenges</h3>
+                <ul>
+                    <li>Long development cycles from design to tool readiness</li>
+                    <li>High rework and rejection due to dimensional inaccuracies</li>
+                    <li>Difficulty in optimizing mould life and repeatability</li>
+                    <li>Lack of integration between design, prototyping, and production</li>
+                    <li>Rising tooling costs impacting overall product profitability</li>
+
+                </ul>
+            </div>
+
+            <div class="cs-box solutions">
+                <h3>Solutions</h3>
+                <ul>
+                    <li>Custom Die &amp; Mould Design optimized for manufacturability and tool life</li>
+                    <li>Prototype to Production Tooling support for low- to high-volume manufacturing</li>
+                    <li>High-Precision CNC Machining &amp; EDM for complex geometries</li>
+                    <li>Material Selection &amp; Heat Treatment Guidance for durability and performance</li>
+                    <li>Validation, Trials &amp; Iteration Support to ensure first-time-right tooling</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Type 1: Left Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Blow Mould Die</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/diemould/blow_mould_die.png' %}" alt="Blow Mould Die">
+                </div>
+                <div class="description">
+                    <p>Progressive dies perform a series of operations in a single die at two or more stations during each press stroke to form or make parts from a strip or coil of metal.</p>
+                    <p>The strip is fed through the die with each press stroke, and with each stroke, a different operation is performed until the finished part is made.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 2: Right Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Family Mould Die</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper two-images">
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/diemould/family_mould.png' %}" alt="Family Mould View 1">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/diemould/family_mould2.png' %}" alt="Family Mould View 2">
+                    </div>
+                </div>
+                <div class="description">
+                    <p>Compound dies perform two or more cutting operations at a single station with a single stroke of the press. These dies are used when high accuracy between features is required.</p>
+                    <p>The main advantage of compound dies is that they produce parts with very close tolerances between cut features since all cutting is done in one operation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 3: Left Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Gravity Die</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/diemould/gravity_die.png' %}" alt="Gravity Die">
+                </div>
+                <div class="description">
+                    <p>Progressive dies perform a series of operations in a single die at two or more stations during each press stroke to form or make parts from a strip or coil of metal.</p>
+                    <p>The strip is fed through the die with each press stroke, and with each stroke, a different operation is performed until the finished part is made.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 4: Right Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Pressure Die Casting</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper two-images">
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/diemould/pressure_die_casting.png' %}" alt="Pressure Die View 1">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'appp/images/services/diemould/pressure_die_cast2.png' %}" alt="Pressure Die View 2">
+                    </div>
+                </div>
+                <div class="description">
+                    <p>Compound dies perform two or more cutting operations at a single station with a single stroke of the press. These dies are used when high accuracy between features is required.</p>
+                    <p>The main advantage of compound dies is that they produce parts with very close tolerances between cut features since all cutting is done in one operation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 5: Left Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Multi Cavity Mould Die</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/diemould/multi_cavity_mould.png' %}" alt="Multi Cavity Mould">
+                </div>
+                <div class="description">
+                    <p>Progressive dies perform a series of operations in a single die at two or more stations during each press stroke to form or make parts from a strip or coil of metal.</p>
+                    <p>The strip is fed through the die with each press stroke, and with each stroke, a different operation is performed until the finished part is made.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 6: Right Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Roto Mould Die</h2>
+            <div class="content-wrapper right-aligned">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/diemould/roto_mould.png' %}" alt="Roto Mould Die">
+                </div>
+                <div class="description">
+                    <p>Progressive dies perform a series of operations in a single die at two or more stations during each press stroke to form or make parts from a strip or coil of metal.</p>
+                    <p>The strip is fed through the die with each press stroke, and with each stroke, a different operation is performed until the finished part is made.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 7: Left Image -->
+        <div class="mould-type">
+            <h2 class="type-heading">Production Mould Die</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img src="{% static 'appp/images/services/diemould/productionmould_main.png' %}" alt="Production Mould Die">
+                </div>
+                <div class="description">
+                    <p>Progressive dies perform a series of operations in a single die at two or more stations during each press stroke to form or make parts from a strip or coil of metal.</p>
+                    <p>The strip is fed through the die with each press stroke, and with each stroke, a different operation is performed until the finished part is made.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  

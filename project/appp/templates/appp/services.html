@@ -1,0 +1,130 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Our Services{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/services.css' %}">
+<style>
+    /* Fix navbar dropdown z-index */
+    .services-page {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .navbar {
+        position: fixed;
+        z-index: 1030;
+    }
+
+    .dropdown-menu {
+        z-index: 1031;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="services-page">
+    <div class="container">
+        <h1 class="main-heading">Our Services</h1>
+        
+        <div class="row">
+            <!-- Service Card 1 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'boxbuild' %}">
+                            <img src="{% static 'appp/images/services/boxbuild/box_build_main.png' %}" alt="Box Builds">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'boxbuild' %}">Box Builds</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'contractmanuf' %}">
+                            <img src="{% static 'appp/images/services/contractmanuf/cm_main.png' %}" alt="Contract Manufacturing">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'contractmanuf' %}">Contract Manufacturing</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'injectionmould' %}">
+                            <img src="{% static 'appp/images/services/injectionmould/injection_moulding_home.png' %}" alt="Injection Moulding">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'injectionmould' %}">Injection Moulding</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'oem' %}">
+                            <img src="{% static 'appp/images/services/oem/oem_main.png' %}" alt="Oem">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'oem' %}">OEM</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 5 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'prototyping' %}">
+                            <img src="{% static 'appp/images/services/prototyping/proto_main.png' %}" alt="Prototyping">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'prototyping' %}">Prototyping</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 6 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-image">
+                        <a href="{% url 'diemould' %}">
+                            <img src="{% static 'appp/images/services/diemould/productionmould_main.png' %}" alt="Box Builds">
+                        </a>
+                    </div>
+                    <div class="service-content">
+                        <h3>
+                            <a href="{% url 'diemould' %}">Die Moulding Manufacturing</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Referral Program{% endblock %}
+
+{% block extra_css %}
+<style>
+.referral-page {
+    background-color: #f2f4f7;
+    padding: 60px 0;
+}
+
+.main-heading {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.white-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.referral-section {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.referral-heading {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.referral-heading span {
+    color: #007bff;
+}
+
+.lead {
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.tier-box {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.reward {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.total-reward {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.terms-box {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 4px solid #ffc107;
+    background: #fff8e1;
+    border-radius: 6px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="referral-page">
+    <div class="container">
+
+        <h1 class="main-heading">Referral Program</h1>
+
+        <div class="row">
+
+            <!-- LEFT: Referral Info -->
+            <div class="col-lg-6 mb-4">
+                <div class="white-card">
+                    <div class="referral-section">
+                        <h2 class="referral-heading">
+                            Earn Up to <span>₹1,00,000</span> for Referring Innovative Tech Companies
+                        </h2>
+
+                        <p class="lead">
+                            Know a startup, OEM, or technology-driven company that needs product design,
+                            electronics, firmware, or IoT development?
+                            Refer them to us and earn attractive referral rewards.
+                        </p>
+
+                        <h3>How the Referral Program Works</h3>
+
+                        <div class="tier-box">
+                            <h4>Tier 1: Qualified Referral</h4>
+                            <p class="reward">₹15,000</p>
+                        </div>
+
+                        <div class="tier-box">
+                            <h4>Tier 2: Introduction</h4>
+                            <p class="reward">₹85,000</p>
+                        </div>
+
+                        <div class="total-reward">
+                            <h3>Total Reward</h3>
+                            <p>Up to <strong>₹1,00,000</strong></p>
+                        </div>
+
+                        <div class="terms-box">
+                            <h4>Important Terms</h4>
+                            <ul>
+                                <li>No spam or self-referrals</li>
+                                <li>TDS applicable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Image + Forms -->
+            <div class="col-lg-6">
+
+                <!-- Image -->
+                <div class="mb-4 text-center">
+                    <img
+                        src="{% static 'appp/images/referal.png' %}"
+                        alt="Referral Program"
+                        class="img-fluid rounded shadow"
+                    >
+                </div>
+
+                <!-- Referrer Form -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h4 class="mb-3">Your Details (Referrer)</h4>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" class="form-control mb-3" name="referrer_name" placeholder="Your Name" required>
+                            <input type="email" class="form-control mb-3" name="referrer_email" placeholder="Email" required>
+                            <input type="tel" class="form-control mb-3" name="referrer_phone" placeholder="Phone" required>
+                            <input type="text" class="form-control" name="referrer_company" placeholder="Company (Optional)">
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Referred Form -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="mb-3">Referred Person / Company</h4>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" class="form-control mb-3" name="referred_name" placeholder="Name" required>
+                            <input type="email" class="form-control mb-3" name="referred_email" placeholder="Email" required>
+                            <input type="tel" class="form-control mb-3" name="referred_phone" placeholder="Phone" required>
+                            <input type="text" class="form-control mb-3" name="referred_company" placeholder="Company">
+                            <textarea class="form-control mb-3" rows="3" name="notes" placeholder="Additional Notes"></textarea>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                Submit Referral
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

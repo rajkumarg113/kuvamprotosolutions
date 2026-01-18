@@ -1,0 +1,423 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Prototyping{% endblock %}
+
+{% block extra_css %}
+
+<style>
+
+
+    /* Challenges & Solutions */
+    .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+    /* Theory Content Styles */
+    .theory-content {
+        max-width: 1400px;
+        margin: 50px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .theory-content h2 {
+        color: #333;
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        text-align: center;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 15px;
+    }
+
+    .theory-content h3 {
+        color: #444;
+        font-size: 1.8rem;
+        margin: 30px 0 20px;
+    }
+
+    .description-text {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .description-text p {
+        margin-bottom: 20px;
+    }
+
+    .description-text ul {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+
+    .description-text li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    /* Image Gallery Styles */
+    .image-gallery {
+        max-width: 1400px;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .gallery-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .gallery-item {
+        flex: 1;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .image-caption {
+        text-align: center;
+        color: #666;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .gallery-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-item img {
+            height: 250px;
+        }
+
+        .theory-content {
+            padding: 20px;
+        }
+
+        .theory-content h2 {
+            font-size: 1.8rem;
+        }
+
+        .description-text {
+            font-size: 1rem;
+        }
+    }
+
+    .service-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    /* Main Heading Styles */
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: 10px auto 50px;
+        padding: 1px;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .main-heading:after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: #007bff;
+        margin: 15px auto 0;
+    }
+
+    /* Cover image styles */
+    .cover-image-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto 50px;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cover-image {
+        width: 100%;
+        height: 800px;
+        object-fit: contain; /* Changed from cover to contain */
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+        .main-heading {
+            font-size: 2.5rem;
+            margin: 20px auto 30px;
+        }
+
+        .cover-image {
+            height: 400px;
+        }
+        .challenges-solutions {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="service-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">Prototyping Services</h1>
+
+        <!-- Cover Image -->
+        <div class="cover-image-container">
+            <img src="{% static 'appp/images/services/prototyping/engineering_functional_prototype.png' %}" alt="Prototyping Services Cover" class="cover-image">
+        </div>
+
+        <!-- First Gallery Row -->
+        <div class="image-gallery">
+            <div class="gallery-row">
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/hi_proto1.png' %}" alt="Prototype Image 1">
+                    <p class="image-caption">High Fidelity Prototype 1</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/hi_proto2.png' %}" alt="Prototype Image 2">
+                    <p class="image-caption">High Fidelity Prototype 2</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/hi_proto3.png' %}" alt="Prototype Image 3">
+                    <p class="image-caption">High Fidelity Prototype 3</p>
+                </div>
+            </div>
+        </div>
+        <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+        <div class="challenges-solutions">
+            <div class="cs-box challenges">
+                <h3>Challenges</h3>
+                <ul>
+                    <p>Innovators and product teams often struggle to convert ideas into functional 
+                        prototypes quickly. Challenges include unclear technical feasibility, 
+                        long development cycles, high iteration costs, and lack of integration between electronics, firmware, and mechanical design. 
+                        These delays slow down validation, investor demos, and go-to-market timelines.</p>
+            </div>
+
+            <div class="cs-box solutions">
+                <h3>Solutions</h3>
+                <ul>
+                    <p>Kuvam Proto Solutions delivers end-to-end rapid prototyping that transforms c
+                        oncepts into working prototypes—fast, reliable, and scalable. 
+                        We combine electronics design, firmware development, mechanical fabrication, and 
+                        system integration under one roof to help startups, enterprises, and OEMs validate 
+                        ideas with speed and confidence.</p>
+                       <p> From proof-of-concept to functional MVPs, our rapid prototyping approach enables continuous iteration, real-world testing, and early user feedback—without overengineering or wasted cost.
+                        </p>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Theory Content -->
+        <div class="theory-content">
+            <h2>Understanding Prototyping</h2>
+            <div class="description-text">
+                <p>A product prototype is the initial version of your product, showcasing how it should look and what it can do. Through the prototype, you can identify any flaws in your concept and make improvements to create the best possible version of your product. a product prototype gradually evolves into a near-complete version of the final product. Prototypes can serve different purposes depending on the development stage and requirements — whether it's a visual model to showcase the product's appearance or a functional model to demonstrate how it operates.
+                </p>
+                
+                <p>
+                    we understand the importance of prototyping in the product development lifecycle. Our experienced designers and engineers can guide you through every stage of the prototyping process, from ideation to final testing. We offer a range of prototyping services, including:
+                </p>
+                <ul>
+                    <li><strong>Custom Prototyping Solutions:</strong> Tailored prototypes aligning with your product goals and user needs.</li>
+                    <li><strong>User Testing and Feedback: </strong> Comprehensive testing services to effectively gather user insights and refine your prototype</li>
+                    <li><strong>Iterative Design Support:  </strong> We help you navigate the iterative process, ensuring each prototype improves upon the last and meets your evolving requirements.</li>
+                    <li><strong>Integration of Advanced Technologies: </strong>Utilising the latest tools and techniques, including 3D printing and digital prototyping, to create high-quality, functional models.</li>
+                </ul>
+                
+                <p>
+                    Our commitment to delivering innovative solutions means we can help you bring your product ideas to life, ensuring that your final product resonates with users and stands out in the market. We offer services like  
+                </p>
+                
+                <p><strong>Proof of Concept</strong></p>
+                <p>In the realm of product design, prototyping is an essential step that bridges the gap between concept and reality. <strong>POC</strong> for short are a type of prototype. They stand out for their simplicity and efficiency. They are used in the initial stages of the design process.</p>
+                
+                <ul>
+                    <li>Designers use these simple, often hand-drawn models which allow them to explore and evaluate ideas quickly and they do so without needing substantial amounts of resources or time.</li>
+                    <li>Low-fidelity prototypes focus on broad concepts and overall structure.</li>
+                    <li>They help with early exploration, fast iteration, and clear team and stakeholder communication.</li>
+                </ul>
+                
+                <p><strong>What are POC</strong></p>
+                <p>Low-fidelity (low-fi) prototyping in product design uses simple, quick sketches. Designers create these with basic materials like paper, cardboard, or digital tools. They focus on big-picture ideas, not details.</p>
+                <ul>
+                    <li>This method encourages experimentation and teamwork.</li>
+                    <li>It allows for fast testing and improvement of ideas.</li>
+                    <li>Designers can easily modify prototypes, which makes this perfect for brainstorming and refining early concepts.</li>
+                    <li>It simplifies the design process, making feedback and changes quick as well as ensuring that key design principles are explored before moving to more complex stages.</li>
+                </ul>
+                
+                <p><strong>Why it is important</strong></p>
+                <ul>
+                    <li>Designers use low-fidelity prototyping as it is relatively rapid and cost-effective for exploring and sharing ideas.</li>
+                    <li>They can do this without needing much time or many resources.</li>
+                    <li>The prototypes focus on broad concepts, not fine details which allow for large changes to be made fast based on feedback.</li>
+                    <li>This helps find potential design flaws and usability issues early, ensuring that big problems are fixed before the later and more costly development stages.</li>
+                    <li>Rough prototypes help teams work together and talk to clients.</li>
+                    <li>They align everyone's vision early in the process.</li>
+                </ul>
+                
+                <p><strong>Display only prototype</strong></p>
+                <p>In today's fast-paced world of product development, efficiency and precision are critical. High-fidelity (high-fi) prototypes have become a vital tool in this process.</p>
+                
+                <ul>
+                    <li>These prototypes are detailed and interactive.</li>
+                    <li>They represent the final product and go beyond basic sketches, CAD models, and early-stage low-fidelity prototypes.</li>
+                    <li>High-fidelity prototypes are used for many products, from small toys to large machines.</li>
+                    <li>They bridge the gap between developed concepts and the final product.</li>
+                    <li>They have many benefits that improve the final outcome.</li>
+                </ul>
+                
+                <p><strong>What</strong></p>
+                <ul>
+                    <li>High-fidelity prototypes are detailed, interactive models of a product.</li>
+                    <li>They closely resemble the final version in design, functionality, and user experience.</li>
+                    <li>They have accurate colors, materials, textures, and realistic functionality.</li>
+                    <li>This level of detail allows stakeholders to interact with the product as if it were fully developed.</li>
+                </ul>
+                
+                <p><strong>Why</strong></p>
+                <ul>
+                    <li>They show a realistic version of the final product, facilitating thorough usability testing and early identification of design flaws.</li>
+                    <li>Stakeholders can use the product as if it were fully developed.</li>
+                    <li>Early feedback enables needed adjustments before full production, reducing costs and time.</li>
+                    <li>High-fidelity prototypes improve communication among team members, stakeholders, and clients.</li>
+                    <li>This clarity helps secure stakeholder buy-in and investment.</li>
+                    <li>The iterative process supports continuous improvement and innovation.</li>
+                </ul>
+                
+                <p><strong>Functional Prototype</strong></p>
+                <p>A functional prototype is a sample or model of a product built to test a concept or process.</p>
+                <ul>
+                    <li>It is used in product development to test and try a new design.</li>
+                    <li>Functional prototypes bridge the gap between an idea and its actual look, feel, and function.</li>
+                </ul>
+                
+                <p><strong>What</strong></p>
+                <ul>
+                    <li>A functional prototype is the most basic working prototype built to validate a product design.</li>
+                    <li>It is integral to the assembly, testing, piloting, and market research process.</li>
+                    <li>It allows examination and testing under extreme conditions to improve designs.</li>
+                </ul>
+                
+                <p><strong>Why</strong></p>
+                <ul>
+                    <li>Facilitates design testing, evaluation, and improvement in the product development process.</li>
+                    <li>Validates product performance to ensure quality standards.</li>
+                    <li>Identifies and eliminates potential problems before expensive production tooling.</li>
+                    <li>Ensures manufacturing feasibility and timely product delivery.</li>
+                    <li>Helps share ideas with stakeholders to showcase product value to customers and investors.</li>
+                    <li>Helps patent inventions to protect intellectual property.</li>
+                </ul>
+                
+                <p><strong>The benefits of functional prototypes</strong></p>
+                <ul>
+                    <li>User Experience Testing: Facilitates real-time user testing and feedback.</li>
+                    <li>Early Detect Design Flaws: Reduces costs associated with product development.</li>
+                    <li>Trim down Time to Market: Speeds up issue detection and correction.</li>
+                    <li>Cost Reduction: Minimizes the risk of expensive modifications later.</li>
+                    <li>Enhanced Communication: Serves as tangible representations for better stakeholder communication.</li>
+                </ul>
+                
+                <p><strong>8 Lessons After Years of Prototyping</strong></p>
+                <ul>
+                    <li><strong>Start Simple:</strong> Begin with low-fidelity prototypes before investing in high-fidelity models.</li>
+                    <li><strong>Use the Right Materials:</strong> Choose materials that mimic the final product.</li>
+                    <li><strong>Focus on Key Features First:</strong> Prioritize the most critical functions and features.</li>
+                    <li><strong>Rapid Iteration is Key:</strong> Quickly refine your prototype based on feedback.</li>
+                    <li><strong>Test with Real Users:</strong> Involve potential users early in the prototyping stage.</li>
+                    <li><strong>Document Everything:</strong> Keep records of materials, techniques, and user feedback.</li>
+                    <li><strong>Consider Manufacturing Constraints:</strong> Ensure the design is scalable for manufacturing.</li>
+                    <li><strong>Work with an Experienced Prototype Specialist:</strong> Partnering with professionals avoids common pitfalls.</li>
+                </ul>
+                
+                <p>These strategies ensure a prototype that's not only functional but also efficient to produce and reflective of the final product.</p>
+                <!-- Add your remaining content here -->
+            </div>
+        </div>
+
+        <!-- Second Gallery Row -->
+        <div class="image-gallery">
+            <div class="gallery-row">
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/poc1.png' %}" alt="POC Image 1">
+                    <p class="image-caption">Proof of Concept 1</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/poc2.png' %}" alt="POC Image 2">
+                    <p class="image-caption">Proof of Concept 2</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'appp/images/services/prototyping/poc3.png' %}" alt="POC Image 3">
+                    <p class="image-caption">Proof of Concept 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  

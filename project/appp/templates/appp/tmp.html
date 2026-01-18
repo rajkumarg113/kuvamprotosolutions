@@ -1,0 +1,106 @@
+/* Challenges & Solutions */
+    .challenges-solutions {
+        display: flex;
+        gap: 30px;
+        margin: 40px auto;
+        gap:40px;
+    }
+
+    .cs-box {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-box h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .cs-box ul {
+        padding-left: 20px;
+    }
+
+    .cs-box ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .challenges {
+        border-top: 6px solid #dc3545;
+    }
+
+    .solutions {
+        border-top: 6px solid #28a745;
+    }
+
+
+
+
+.challenges-solutions {
+    flex-direction: column;
+}
+
+              <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
+              <div class="challenges-solutions">
+                <div class="cs-box challenges">
+                    <h3>Challenges</h3>
+                    <ul>
+                        <li>Lack of reliable electronics manufacturing partners</li>
+                        <li>High MOQ requirements from large EMS players</li>
+                        <li>Inconsistent quality during early production runs</li>
+                        <li>Limited flexibility for design changes and iteration</li>
+                        <li>Difficulty managing suppliers, sourcing, and assembly under one roof</li>
+
+                    </ul>
+                </div>
+
+                <div class="cs-box solutions">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li>PCB assembly (SMT & THT)</li>
+                        <li>Electronics box builds</li>
+                        <li>Cable harnessing & electromechanical assembly</li>
+                        <li>Enclosure integration and testing</li>
+                        <li>Functional testing, QA, and pilot production</li>
+                        <li>Low-to-medium volume manufacturing with scale-ready processes</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+             <!-- YouTube Video Section -->
+        <div class="video-container">
+            <h2 class="video-title">Product Demo Video</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    width="100%" 
+                    height="300" 
+                    src="https://www.youtube.com/embed/8MUT2irk2qo?si=rzCGYP5hrcbGWC_h" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+
+         <!-- YouTube Video Section -->
+         <div class="video-container">
+            <h2 class="video-title">Product Demo Video</h2>
+            <div class="video-wrapper">
+                <video width="100%" height="300" controls>
+                    <source src="{% static 'appp/images/products/refrigration_and_thermal_solutions/dc_compressor/v_dc_compressor.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>

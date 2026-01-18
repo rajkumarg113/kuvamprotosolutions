@@ -1,0 +1,320 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section (replacing carousel) -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Side: Text Content -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="hero-content">
+                    <h1 class="hero-title">Let's innovate your products with our electronic development expertise</h1>
+                    <button type="button" class="btn btn-hero" data-bs-toggle="modal" data-bs-target="#contactModal">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Side: Image -->
+            <div class="col-lg-6">
+                <div class="hero-image-wrapper">
+                    <img src="{% static 'appp/images/gm.png' %}" alt="Electronic Development" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Modal Popup -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center mb-4">We want to know how we can help expand your business</p>
+                
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="modal_name" name="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="modal_email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="modal_phone" name="phone" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_company" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="modal_company" name="company" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">When can we call you?</label>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="modal_preferred_date" class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" id="modal_preferred_date" name="preferred_date" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="modal_preferred_time" class="form-label">Preferred Time</label>
+                                <input type="time" class="form-control" id="modal_preferred_time" name="preferred_time" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="modal_interest" class="form-label">What are you interested in?</label>
+                        <select class="form-select" id="modal_interest" name="interest" required>
+                            <option value="" selected disabled>Select your interest</option>
+                            <option value="I want to Get Part manufacture">I want to Get Part manufacture</option>
+                            <option value="OEM/Prototype">OEM/Prototype</option>
+                            <option value="Manufacturing Service">Manufacturing Service</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Gallery Section -->
+<section class="image-gallery-section">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h1 class="section-title gallery-title">What is Your Profile</h1>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- First Image Container -->
+            <div class="col-md-4">
+                <a href="{% url 'startup' %}" class="image-label-link">
+                    <h3 class="image-label">Startup</h3>
+                </a>
+                <div class="image-container">
+                    <a href="{% url 'startup' %}" class="image-link">
+                        <img src="{% static 'appp/images/startup.png' %}" alt="Gallery Image 1" class="gallery-image">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Second Image Container -->
+            <div class="col-md-4">
+                <a href="{% url 'sme' %}" class="image-label-link">
+                    <h3 class="image-label">SME</h3>
+                </a>
+                <div class="image-container">
+                    <a href="{% url 'sme' %}" class="image-link">
+                        <img src="{% static 'appp/images/sme.png' %}" alt="Gallery Image 2" class="gallery-image">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Third Image Container -->
+            <div class="col-md-4">
+                <a href="{% url 'rnd' %}" class="image-label-link">
+                    <h3 class="image-label">R&D Team</h3>
+                </a>
+                <div class="image-container">
+                    <a href="{% url 'rnd' %}" class="image-link">
+                        <img src="{% static 'appp/images/rnd.png' %}" alt="Gallery Image 3" class="gallery-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Growth Story Section -->
+<section class="growth-story-section">
+    <div class="elementor-background-overlay"></div>
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h1 class="section-title">Our Growth Story</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Left Side: Story Text -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="story-content">
+                    <p class="story-text">
+                        Since our inception, we've been on an incredible journey of growth and innovation. Starting as a small team with big dreams, we've evolved into a leading force in the industry. Our commitment to excellence and customer satisfaction has driven us to expand our reach globally.
+                    </p>
+                    <p class="story-text">
+                        Through strategic partnerships and continuous innovation, we've achieved significant milestones. Our dedicated team has worked tirelessly to develop cutting-edge solutions that address real-world challenges. This dedication has earned us the trust of numerous clients across various industries.
+                    </p>
+            
+                </div>
+            </div>
+            
+            <!-- Right Side: Counters -->
+            <div class="col-lg-6">
+                <div class="counters-grid">
+                    <div class="counter-container">
+                        <div class="counter-title">Components</div>
+                        <div class="counter-number">
+                            <span class="counter" data-target="5">1</span>
+                            <span class="counter-suffix">M</span>
+                        </div>
+                    </div>
+                    
+                    <div class="counter-container">
+                        <div class="counter-title">Clients</div>
+                        <div class="counter-number">
+                            <span class="counter" data-target="100">1</span>
+                            <span class="counter-suffix">+</span>
+                        </div>
+                    </div>
+                    
+                    <div class="counter-container">
+                        <div class="counter-title">Suppliers</div>
+                        <div class="counter-number">
+                            <span class="counter" data-target="600">1</span>
+                            <span class="counter-suffix">+</span>
+                        </div>
+                    </div>
+                    
+                    <div class="counter-container">
+                        <div class="counter-title">Industries</div>
+                        <div class="counter-number">
+                            <span class="counter" data-target="5">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Client Section -->
+<section class="client-section">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="section-title client-title" style="font-family: 'Inter', sans-serif; color: #ffffff;">We Are Proud To Work With</h2>
+            </div>
+        </div>
+        
+        <div class="client-slider">
+            <div class="slide-track">
+                <!-- First set of logos -->
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl1.png' %}" alt="Client 1">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl2.png' %}" alt="Client 2">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl3.png' %}" alt="Client 3">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl4.png' %}" alt="Client 4">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl5.png' %}" alt="Client 5">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl6.png' %}" alt="Client 6">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl7.png' %}" alt="Client 7">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl8.png' %}" alt="Client 8">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl9.png' %}" alt="Client 9">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl10.png' %}" alt="Client 10">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl11.png' %}" alt="Client 11">
+                </div>
+                
+                <!-- Duplicate set for smooth infinite scroll -->
+                <!-- <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl1.png' %}" alt="Client 1">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl2.png' %}" alt="Client 2">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl3.png' %}" alt="Client 3">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl4.png' %}" alt="Client 4">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl5.png' %}" alt="Client 5">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl6.png' %}" alt="Client 6">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl7.png' %}" alt="Client 7">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl8.png' %}" alt="Client 8">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl9.png' %}" alt="Client 9">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl10.png' %}" alt="Client 10">
+                </div>
+                <div class="slide">
+                    <img src="{% static 'appp/images/clients/cl11.png' %}" alt="Client 11">
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'appp/js/counter.js' %}"></script>
+{% endblock %}
+

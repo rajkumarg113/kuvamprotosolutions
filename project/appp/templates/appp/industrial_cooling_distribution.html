@@ -1,0 +1,465 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Enterprise Software{% endblock %}
+
+{% block extra_css %}
+<!-- Add Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    .product-detail {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .main-heading {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        padding: 5px;
+    }
+
+    .product-image {
+        width: 100%;
+        max-width: 1000px;
+        height: 450px;
+        margin: 0 auto 40px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .product-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .product-type {
+        text-align: center;
+        color: #007bff;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .product-description {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .main-heading {
+            font-size: 2rem;
+        }
+
+        .product-image {
+            height: 300px;
+        }
+
+        .product-type {
+            font-size: 1.3rem;
+        }
+
+        .product-description {
+            font-size: 1rem;
+        }
+    }
+
+    /* Thumbnail Gallery Styles */
+    .thumbnail-gallery {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .thumbnail {
+        width: 80px;
+        height: 60px;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .thumbnail:hover {
+        border-color: #007bff;
+        transform: translateY(-3px);
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .thumbnail.active {
+        border-color: #007bff;
+    }
+
+    .thumbnail-container {
+        text-align: center;
+    }
+
+    .thumbnail-label {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .pdf-download-section {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .pdf-icon {
+        font-size: 48px;
+        color: #dc3545;
+        margin-bottom: 15px;
+    }
+
+    .download-title {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .download-form, .otp-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .send-otp-btn, .verify-otp-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .send-otp-btn:hover, .verify-otp-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Update YouTube Video Section Styles */
+    .video-container {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 800px;  /* Reduced from 1000px */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-title {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="product-detail">
+    <div class="container">
+        <!-- Main Heading -->
+        <h1 class="main-heading">industrial_cooling_distribution</h1>
+
+        <!-- Large Image -->
+        <div class="product-image">
+            <img id="mainImage" src="{% static 'appp/images/products/.png' %}" alt="inspection_duct_crawler">
+        </div>
+
+        <!-- Thumbnail Gallery -->
+        <div class="thumbnail-gallery">
+            <div class="thumbnail-container">
+                <div class="thumbnail active" data-image="{% static 'appp/images/products/inspection_duct_crawler/r2.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r2.png' %}" alt="Product View 1">
+                </div>
+                <div class="thumbnail-label">Full Image</div>
+            </div>
+
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r3.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r3.png' %}" alt="Product View 2">
+                </div>
+                <div class="thumbnail-label">Left View</div>
+            </div>
+
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r4.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r4.png' %}" alt="Product View 3">
+                </div>
+                <div class="thumbnail-label">Right View</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r5.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r5.png' %}" alt="Product View 4">
+                </div>
+                <div class="thumbnail-label">Rear View</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r6.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r6.png' %}" alt="Product View 4">
+                </div>
+                <div class="thumbnail-label">Full View</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail active" data-image="{% static 'appp/images/products/inspection_duct_crawler/r7.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r7.png' %}" alt="Product View 1">
+                </div>
+                <div class="thumbnail-label">Full Image</div>
+            </div>
+
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r8.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r8.png' %}" alt="Product View 2">
+                </div>
+                <div class="thumbnail-label">Left View</div>
+            </div>
+
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r9.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r9.png' %}" alt="Product View 3">
+                </div>
+                <div class="thumbnail-label">Right View</div>
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail" data-image="{% static 'appp/images/products/inspection_duct_crawler/r10.png' %}">
+                    <img src="{% static 'appp/images/products/inspection_duct_crawler/r10.png' %}" alt="Product View 4">
+                </div>
+                <div class="thumbnail-label">Rear View</div>
+            </div>
+
+            
+    
+        </div>
+
+        <!-- YouTube Video Section -->
+        <div class="video-container">
+            <h2 class="video-title">Product Demo Video</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    width="100%" 
+                    height="300" 
+                    src="https://www.youtube.com/embed/8MUT2irk2qo?si=rzCGYP5hrcbGWC_h" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="product-content">
+            <!-- Product Type -->
+            <h2 class="product-type">Advanced Business Software</h2>
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <p>Our enterprise software solutions are designed to streamline your business operations and enhance productivity. We deliver robust, scalable software that meets your organization's specific needs and challenges.</p>
+                
+                <p>Our enterprise software offerings include:</p>
+                <ul>
+                    <li>Enterprise Resource Planning (ERP) Systems</li>
+                    <li>Customer Relationship Management (CRM)</li>
+                    <li>Business Intelligence Tools</li>
+                    <li>Supply Chain Management Solutions</li>
+                    <li>Human Resource Management Systems</li>
+                    <li>Project Management Software</li>
+                </ul>
+
+                <p>We focus on delivering high-performance, secure, and user-friendly software solutions that help businesses achieve their strategic objectives and maintain a competitive edge in today's digital landscape.</p>
+            </div>
+
+            <!-- Update the PDF Download Section -->
+            <div class="pdf-download-section">
+                <i class="fas fa-file-pdf pdf-icon"></i>
+                <h3 class="download-title">
+                    <i class="fas fa-download" style="font-size: 24px;"></i>
+                    Download Product Brochure
+                </h3>
+                
+                <!-- Initial Download Form -->
+                <form id="downloadForm" class="download-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="send-otp-btn">Send OTP</button>
+                </form>
+
+                <!-- OTP Verification Form (Initially Hidden) -->
+                <form id="otpForm" class="otp-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="otp">Enter OTP</label>
+                        <input type="text" id="otp" name="otp" required>
+                    </div>
+                    <button type="submit" class="verify-otp-btn">Verify & Download</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+    // Handle hover preview
+    thumbnail.addEventListener('mouseenter', function() {
+        const imagePath = this.dataset.image;
+        document.getElementById('mainImage').src = imagePath;
+    });
+
+    // Handle click for permanent selection
+    thumbnail.addEventListener('click', function() {
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        this.classList.add('active');
+        const imagePath = this.dataset.image;
+        document.getElementById('mainImage').src = imagePath;  // Update main image on click
+    });
+});
+
+// Add click event listener to document
+
+document.getElementById('downloadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // Send request to backend to generate and send OTP
+    fetch('/send-otp/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ name, email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('downloadForm').style.display = 'none';
+            document.getElementById('otpForm').style.display = 'block';
+            alert('OTP has been sent to your email!');
+        } else {
+            alert('Error sending OTP. Please try again.');
+        }
+    });
+});
+
+document.getElementById('otpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const otp = document.getElementById('otp').value;
+    const email = document.getElementById('email').value;
+
+    // Verify OTP and trigger download
+    fetch('/verify-otp/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ 
+            email, 
+            otp,
+            product_type: 'industrial_cooling_distribution'  // Add product type identifier
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = `/download-pdf/?type=${data.product_type}`;  // Add product type to URL
+        } else {
+            alert('Invalid OTP. Please try again.');
+        }
+    });
+});
+
+// Function to get CSRF token from cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock %}  
