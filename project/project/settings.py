@@ -32,6 +32,11 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://kuvamprotosolutions.in",
+    "https://www.kuvamprotosolutions.in",
+]
+
 
 # Application definition
 
