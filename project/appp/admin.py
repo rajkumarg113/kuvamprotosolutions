@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactRequest
+from .models import ContactRequest, Referral
 
 # Register your models here.
 
@@ -11,3 +11,4 @@ from .models import ContactRequest
 #     search_fields = ('name', 'email', 'phone')
 
 admin.site.register(ContactRequest)
+admin.site.register(Referral)

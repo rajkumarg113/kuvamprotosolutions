@@ -5,186 +5,131 @@
 
 {% block extra_css %}
 <style>
-.referral-page {
-    background-color: #f2f4f7;
-    padding: 60px 0;
-}
-
-.main-heading {
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 40px;
-}
-
-.white-card {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-}
-
-.referral-section {
-    max-width: 900px;
-    margin: 0 auto;
-    line-height: 1.7;
-}
-
-.referral-heading {
-    font-size: 32px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.referral-heading span {
-    color: #007bff;
-}
-
-.lead {
-    font-size: 18px;
-    color: #444;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h3 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.tier-box {
-    background: #f9f9f9;
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-}
-
-.reward {
-    font-weight: bold;
-    color: #28a745;
-}
-
-.total-reward {
-    background: #007bff;
-    color: #fff;
-    text-align: center;
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 30px;
-}
-
-.terms-box {
-    margin-top: 30px;
-    padding: 20px;
-    border-left: 4px solid #ffc107;
-    background: #fff8e1;
-    border-radius: 6px;
-}
+.referral-page { background-color: #f2f4f7; padding: 60px 0; }
+.main-heading { text-align: center; font-size: 40px; margin-bottom: 40px; margin-top: 50px; }
+.white-card { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+.referral-heading span { color: #007bff; }
+.tier-box { background: #f9f9f9; padding: 25px; border-radius: 10px; margin-top: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+.reward { font-weight: bold; color: #28a745; }
+.total-reward { background: #007bff; color: #fff; text-align: center; padding: 25px; border-radius: 10px; margin-top: 30px; }
+.form-section-title { color: #007bff; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #e9ecef; padding-bottom: 5px; }
+.errorlist { color: #dc3545; list-style: none; padding-left: 0; }
 </style>
 {% endblock %}
 
 {% block content %}
-
 <div class="referral-page">
     <div class="container">
-
         <h1 class="main-heading">Referral Program</h1>
 
-        <div class="row">
+        {% if messages %}
+        <div class="messages mb-4">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-            <!-- LEFT: Referral Info -->
+        <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="white-card">
-                    <div class="referral-section">
-                        <h2 class="referral-heading">
-                            Earn Up to <span>₹1,00,000</span> for Referring Innovative Tech Companies
-                        </h2>
-
-                        <p class="lead">
-                            Know a startup, OEM, or technology-driven company that needs product design,
-                            electronics, firmware, or IoT development?
-                            Refer them to us and earn attractive referral rewards.
-                        </p>
-
-                        <h3>How the Referral Program Works</h3>
-
-                        <div class="tier-box">
-                            <h4>Tier 1: Qualified Referral</h4>
-                            <p class="reward">₹15,000</p>
-                        </div>
-
-                        <div class="tier-box">
-                            <h4>Tier 2: Introduction</h4>
-                            <p class="reward">₹85,000</p>
-                        </div>
-
-                        <div class="total-reward">
-                            <h3>Total Reward</h3>
-                            <p>Up to <strong>₹1,00,000</strong></p>
-                        </div>
-
-                        <div class="terms-box">
-                            <h4>Important Terms</h4>
-                            <ul>
-                                <li>No spam or self-referrals</li>
-                                <li>TDS applicable</li>
-                            </ul>
-                        </div>
+                    <h2 class="referral-heading text-center">Earn Up to <span>₹1,00,000</span></h2>
+                    <p class="text-center lead">Know a company needing product design or IoT development?</p>
+                    
+                    <div class="tier-box">
+                        <h4>Tier 1: Qualified Referral</h4>
+                        <p class="reward">₹15,000</p>
+                    </div>
+                    <div class="tier-box">
+                        <h4>Tier 2: Project Conversion</h4>
+                        <p class="reward">₹85,000</p>
+                    </div>
+                    <div class="total-reward">
+                        <h3>Total Potential Reward</h3>
+                        <p class="h2">₹1,00,000</p>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT: Image + Forms -->
             <div class="col-lg-6">
-
-                <!-- Image -->
                 <div class="mb-4 text-center">
-                    <img
-                        src="{% static 'appp/images/referal.png' %}"
-                        alt="Referral Program"
-                        class="img-fluid rounded shadow"
-                    >
+                    <img src="{% static 'appp/images/referal.png' %}" alt="Referral" class="img-fluid rounded shadow">
                 </div>
 
-                <!-- Referrer Form -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-                        <h4 class="mb-3">Your Details (Referrer)</h4>
-
-                        <form method="post">
-                            {% csrf_token %}
-                            <input type="text" class="form-control mb-3" name="referrer_name" placeholder="Your Name" required>
-                            <input type="email" class="form-control mb-3" name="referrer_email" placeholder="Email" required>
-                            <input type="tel" class="form-control mb-3" name="referrer_phone" placeholder="Phone" required>
-                            <input type="text" class="form-control" name="referrer_company" placeholder="Company (Optional)">
-                        </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                    <div class="alert alert-danger shadow-sm">
+                        <p><strong>Please correct the following:</strong></p>
+                        <ul class="mb-0">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </div>
+                    {% endif %}
 
-                <!-- Referred Form -->
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="mb-3">Referred Person / Company</h4>
-
-                        <form method="post">
-                            {% csrf_token %}
-                            <input type="text" class="form-control mb-3" name="referred_name" placeholder="Name" required>
-                            <input type="email" class="form-control mb-3" name="referred_email" placeholder="Email" required>
-                            <input type="tel" class="form-control mb-3" name="referred_phone" placeholder="Phone" required>
-                            <input type="text" class="form-control mb-3" name="referred_company" placeholder="Company">
-                            <textarea class="form-control mb-3" rows="3" name="notes" placeholder="Additional Notes"></textarea>
-
-                            <button type="submit" class="btn btn-primary w-100">
-                                Submit Referral
-                            </button>
-                        </form>
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h4 class="form-section-title">Your Details (Referrer)</h4>
+                            <div class="mb-3">
+                                <label for="referrer_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="referrer_name" name="referrer_name" value="{{ request.POST.referrer_name|default:'' }}" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referrer_email" class="form-label">Email</label>    
+                                <input type="email" class="form-control" id="referrer_email" name="referrer_email" value="{{ request.POST.referrer_email|default:'' }}" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">  
+                                <label for="referrer_phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="referrer_phone" name="referrer_phone" value="{{ request.POST.referrer_phone|default:'' }}" placeholder="Your Phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referrer_company" class="form-label">Company</label>
+                                <input type="text" class="form-control" id="referrer_company" name="referrer_company" value="{{ request.POST.referrer_company|default:'' }}" placeholder="Your Company (Optional)">
+                            </div>
+                        </div>
                     </div>
-                </div>
 
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="form-section-title">Lead Details (Referred)</h4>
+                            <div class="mb-3">
+                                <label for="referred_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="referred_name" name="referred_name" value="{{ request.POST.referred_name|default:'' }}" placeholder="Lead Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referred_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="referred_email" name="referred_email" value="{{ request.POST.referred_email|default:'' }}" placeholder="Lead Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referred_phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="referred_phone" name="referred_phone" value="{{ request.POST.referred_phone|default:'' }}" placeholder="Lead Phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referred_company" class="form-label">Company</label>
+                                <input type="text" class="form-control" id="referred_company" name="referred_company" value="{{ request.POST.referred_company|default:'' }}" placeholder="Lead Company Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Additional Notes</label>  
+                                <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Additional Notes">{{ request.POST.notes|default:'' }}</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 py-2">Submit Referral</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -16,7 +16,7 @@
         font-size: 2.5rem;
         font-weight: 600;
         margin-bottom: 10px;
-        margin-top: 0px;
+        margin-top: 40px;
         padding: 5px;
     }
 
@@ -49,7 +49,6 @@
         font-weight: 500;
         margin-bottom: 20px;
     }
-
     /* Challenges & Solutions */
     .challenges-solutions {
         display: flex;
@@ -90,9 +89,10 @@
     .solutions {
         border-top: 6px solid #28a745;
     }
+    
 
     .service-description {
-        color: black;
+        color:black;
         font-size: 1.1rem;
         line-height: 1.8;
         text-align: justify;
@@ -101,22 +101,31 @@
     @media (max-width: 768px) {
         .main-heading {
             font-size: 2rem;
+            margin-top: 20px;
         }
 
         .service-image {
-            height: 300px;
+            height: auto; 
+            max-height: 400px; /* Optional: sets a limit so it doesn't get too tall */
+            border-radius: 10px;
+        }
+        .service-image img {
+            /* Change 2: 'contain' shows the whole image, 'fill' or 'auto' works too */
+            object-fit: contain; 
+            height: auto;
         }
 
         .service-type {
             font-size: 1.3rem;
+            margin-top: 20px;
         }
 
         .service-description {
             font-size: 1rem;
         }
-
         .challenges-solutions {
             flex-direction: column;
+            gap: 1px;
         }
     }
 </style>

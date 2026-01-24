@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ContactForm
+from .forms import ContactForm, ReferralForm
 import random
 from django.http import JsonResponse, FileResponse
 from django.core.mail import send_mail
@@ -38,6 +38,24 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'appp/contact.html', {'form': form})
+
+
+def referral_view(request):
+    if request.method == 'POST':
+        form = ReferralForm(request.POST)
+        print("Referral POST data:", request.POST)  # Debug print
+        if form.is_valid():
+            print("Referral Form is valid")  # Debug print
+            form.save()
+            messages.success(request, 'Referral submitted successfully! Thank you.')
+            return redirect('referral') # Ensure 'referral' matches your urls.py name
+        else:
+            print("Referral Form errors:", form.errors)  # Debug print
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = ReferralForm()
+    
+    return render(request, 'appp/referral.html', {'form': form})
 
 
 def startup(request):

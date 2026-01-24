@@ -15,17 +15,17 @@
     .main-heading {
         text-align: center;
         color: #333;
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 600;
         margin-bottom: 10px;
-        margin-top: 0px;
-        padding: 5px;
+        margin-top: 40px;
+        padding: 1px;
     }
 
     .product-image {
         width: 100%;
         max-width: 1000px;
-        height: 600px;
+        height: 400px;
         margin: 0 auto 40px;
         overflow: hidden;
         border-radius: 15px;
@@ -39,9 +39,10 @@
     }
 
     .product-content {
-        max-width:1100px;
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 50px 20px;
+        clear:both
     }
 
     .product-type {
@@ -50,9 +51,10 @@
         font-size: 1.5rem;
         font-weight: 500;
         margin-bottom: 20px;
+        margin-top: 50px;
     }
-    /* Challenges & Solutions */
-    .challenges-solutions {
+/* Challenges & Solutions */
+.challenges-solutions {
         display: flex;
         gap: 30px;
         margin: 40px auto;
@@ -92,7 +94,6 @@
         border-top: 6px solid #28a745;
     }
 
-
     .product-description {
         color: #666;
         font-size: 1.1rem;
@@ -111,13 +112,16 @@
 
         .product-type {
             font-size: 1.3rem;
+            margin-top: 40px; /* Add extra breathing room above the heading */
+            display: block;  /* Ensure it treats it as a full block */
+            clear: both;
         }
 
         .product-description {
             font-size: 1rem;
         }
         .challenges-solutions {
-    flex-direction: column;
+            flex-direction: column;
 }
     }
 
@@ -233,6 +237,7 @@
     /* Update YouTube Video Section Styles */
     .video-container {
         margin-top: 40px;
+        margin-bottom: 30px;
         padding: 30px;
         background-color: #fff;
         border-radius: 10px;
