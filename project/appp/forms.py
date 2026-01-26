@@ -1,6 +1,7 @@
 from django import forms
 from .models import ContactRequest
 from .models import Referral
+from .models import CareerApplication
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -18,4 +19,16 @@ class ReferralForm(forms.ModelForm):
             'referred_name', 'referred_email', 'referred_phone', 'referred_company', 'notes'
         ]
 
-    
+class CareerApplicationForm(forms.ModelForm):
+    class Meta:
+        model = CareerApplication
+        fields = [
+            'name',
+            'email',
+            'phone',
+            'location',
+            'position',
+            'experience',
+            'notice_period',
+            'message'
+        ]

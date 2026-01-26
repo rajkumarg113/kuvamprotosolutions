@@ -1,0 +1,267 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Investor Relations - Kuvam Proto Solutions{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --kps-blue: #003366;
+        --kps-gold: #FFC107;
+        --kps-text: #333;
+        --bg-light: #f8f9fa;
+    }
+
+    .investor-page {
+        background-color: var(--bg-light);
+        padding-bottom: 80px;
+    }
+
+    .investor-header {
+        background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url("{% static 'appp/images/factory_bg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .disclaimer-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+        color: #856404;
+        padding: 20px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+
+    .content-card {
+        background: white;
+        border-radius: 12px;
+        padding: 35px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        color: var(--kps-blue);
+        border-left: 5px solid var(--kps-gold);
+        padding-left: 15px;
+        margin-bottom: 25px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+    }
+
+    /* FIX: Sticky Sidebar Wrapper */
+    .sticky-sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .poster-img {
+        width: 100%;
+        max-height: 70vh; /* Prevents image from taking over the whole screen */
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .btn-calc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--kps-gold);
+        color: var(--kps-blue) !important;
+        padding: 18px 30px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none !important;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 320px;
+        border: none;
+    }
+
+    .btn-calc:hover {
+        background-color: var(--kps-blue);
+        color: white !important;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);
+    }
+
+    .metric-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    .metric-table th, .metric-table td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .metric-table th {
+        background-color: var(--kps-blue);
+        color: white;
+    }
+
+    .highlight-list li {
+        margin-bottom: 12px;
+    }
+
+    .vertical-tag {
+        display: inline-block;
+        background: #e9ecef;
+        padding: 8px 15px;
+        border-radius: 50px;
+        margin: 5px;
+        font-weight: 500;
+        color: var(--kps-blue);
+        border: 1px solid #ced4da;
+    }
+
+    .cta-footer {
+        background: var(--kps-blue);
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .cta-footer a { color: var(--kps-gold); text-decoration: none; font-weight: bold; }
+
+    @media (max-width: 991px) {
+        .sticky-sidebar {
+            position: static;
+        }
+        .poster-img {
+            max-height: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="investor-page">
+    <div class="investor-header">
+        <div class="container">
+            <h1>INVESTOR RELATIONS</h1>
+            <p class="lead">Asset-Backed, Secured Debt Investment in Real Manufacturing</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="disclaimer-box">
+            <strong>DISCLAIMER:</strong> This Investment Memorandum has been prepared by Kuvam Proto Solutions solely for discussion purposes. It does not constitute an offer, solicitation, or recommendation to invest. All financial projections are indicative. Recipients are advised to conduct independent due diligence.
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 mb-5">
+                <div class="sticky-sidebar">
+                    <img src="{% static 'appp/images/investor.png' %}" class="poster-img" alt="Investment Plan">
+                    
+                    <a href="{% url 'calculate_investor' %}" class="btn-calc">
+                        <i class="fas fa-calculator me-2"></i> Calculate Your Returns
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                
+                <div class="content-card">
+                    <h2 class="section-title">Executive Summary</h2>
+                    <p>Kuvam Proto Solutions (“KPS”) is an Indian MSME engaged in rapid prototyping, electronics manufacturing services (EMS), OEM assemblies, and custom industrial engineering solutions.</p>
+                    <p>The proposed debt financing of <strong>₹5.00 Crore</strong> will support the setup and scale-up of a new integrated manufacturing unit, enabling KPS to convert an existing demand pipeline into predictable, recurring revenues.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">Business Model & Revenue Drivers</h2>
+                    <p><strong>End-to-End Execution:</strong> Design &rarr; Prototype &rarr; Manufacture &rarr; Supply</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Revenue Streams:</h6>
+                            <ul class="highlight-list">
+                                <li>Engineering & prototyping fees</li>
+                                <li>Manufacturing & assembly margins</li>
+                                <li>OEM supply & repeat contracts</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Commercial Characteristics:</h6>
+                            <ul class="highlight-list">
+                                <li>Milestone-based billing</li>
+                                <li>Short working capital cycles</li>
+                                <li>High order stickiness</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">Financial Snapshot (Indicative)</h2>
+                    <div class="table-responsive">
+                        <table class="metric-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Year 1</th>
+                                    <th>Year 2</th>
+                                    <th>Year 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Revenue</td><td>₹3.5 Cr</td><td>₹6.0 Cr</td><td>₹8.5 Cr</td></tr>
+                                <tr><td>EBITDA</td><td>18–20%</td><td>18–20%</td><td>18–20%</td></tr>
+                                <tr><td>Net Margin</td><td>12–15%</td><td>12–15%</td><td>12–15%</td></tr>
+                                <tr><td>DSCR</td><td>>1.3x</td><td>>1.5x</td><td>>1.6x</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <small class="text-muted">*Projections assume phased capacity ramp-up.</small>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">Proposed Debt Structure</h2>
+                    <ul class="highlight-list">
+                        <li><strong>Total Requirement:</strong> ₹5.00 Crore</li>
+                        <li><strong>Tenure:</strong> 3–5 Years</li>
+                        <li><strong>Security:</strong> Primary (Plant & Machinery), Secondary (Guarantee)</li>
+                        <li><strong>Use of Proceeds:</strong> Manufacturing machinery, electronics assembly setup, working capital, and certifications.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">Business Verticals Powering Returns</h2>
+                    <div class="text-center">
+                        <span class="vertical-tag">EMS & OEM</span>
+                        <span class="vertical-tag">3D Printing & CNC</span>
+                        <span class="vertical-tag">Industrial Automation</span>
+                        <span class="vertical-tag">Robotics & Crawlers</span>
+                        <span class="vertical-tag">Special Purpose Machines</span>
+                    </div>
+                </div>
+
+                <div class="cta-footer">
+                    <h3>Interested in Partnering?</h3>
+                    <p>Call/WhatsApp: <strong>+91 9619013737</strong></p>
+                    <p>Email: <a href="mailto:info@kuvamprotosolutions.in">info@kuvamprotosolutions.in</a></p>
+                    <p class="mb-0"><small>*This is a private debt investment and not a public deposit scheme.</small></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

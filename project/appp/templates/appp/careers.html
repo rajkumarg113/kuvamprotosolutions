@@ -1,0 +1,122 @@
+{% extends 'appp/base.html' %}
+{% load static %}
+
+{% block title %}Careers{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'appp/css/career.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="career-page">
+    <div class="container">
+        <h1 class="main-heading">Careers</h1>
+        <p class="text-center main-subheading">
+            Join us and build meaningful products with real-world impact
+        </p>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-8 mb-4 mb-md-0">
+                <div class="career-form">
+                    <h3 class="career-heading">Apply for a position</h3>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Please fix the following:</strong>
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" class="form-control" name="name" value="{{ form.name.value|default:'' }}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" name="email" value="{{ form.email.value|default:'' }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" name="phone" value="{{ form.phone.value|default:'' }}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="location" class="form-label">Current Location</label>
+                                <input type="text" id="location" class="form-control" name="location" value="{{ form.location.value|default:'' }}">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="position" class="form-label">Position Applying For</label>
+                            <input type="text" id="position" class="form-control" name="position" value="{{ form.position.value|default:'' }}" placeholder="e.g. Firmware Engineer" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="experience" class="form-label">Total Experience (Years)</label>
+                                <input type="text" id="experience" class="form-control" name="experience" value="{{ form.experience.value|default:'' }}" placeholder="e.g. 2.5 Years" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="notice_period" class="form-label">Notice Period</label>
+                                <input type="text" id="notice_period" class="form-control" name="notice_period" value="{{ form.notice_period.value|default:'' }}">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Why do you want to join us?</label>
+                            <textarea id="message" class="form-control" name="message" rows="4">{{ form.message.value|default:'' }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit">
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="career-info">
+                    <h3 class="career-heading">Why work with us?</h3>
+                    <ul class="career-points">
+                        <li>Hands-on product & manufacturing exposure</li>
+                        <li>Fast-paced engineering culture</li>
+                        <li>Work on real customer problems</li>
+                        <li>Opportunity to grow with the company</li>
+                    </ul>
+
+                    <h3 class="career-heading mt-4">Reach HR</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        info@kuvamprotosolutions.in
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

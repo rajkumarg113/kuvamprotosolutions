@@ -1,7 +1,7 @@
 {% extends 'appp/base.html' %}
 {% load static %}
 
-{% block title %}Enterprise Software{% endblock %}
+{% block title %}Startup{% endblock %}
 
 {% block extra_css %}
 <!-- Add Font Awesome CSS -->
@@ -243,33 +243,29 @@
 
         <div class="product-content">
             <!-- Product Type -->
-            <h2 class="product-type">Advanced Business Software</h2>
+            <h2 class="product-type">Let’s turn innovation into execution—and ideas into market-ready products.</h2>
             <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
-            <!-- <div class="challenges-solutions">
+            <div class="challenges-solutions">
                 <div class="cs-box challenges">
                     <h3>Challenges</h3>
                     <ul>
-                        <li>Lack of reliable electronics manufacturing partners</li>
-                        <li>High MOQ requirements from large EMS players</li>
-                        <li>Inconsistent quality during early production runs</li>
-                        <li>Limited flexibility for design changes and iteration</li>
-                        <li>Difficulty managing suppliers, sourcing, and assembly under one roof</li>
-
+                        <li>Rapid prototyping</li>
+                        <li>Right-sized MVP development</li>
+                        <li>Practical, manufacturable designs</li>
+                        <li>Cost-effective supply chain solutions</li>
                     </ul>
                 </div>
 
                 <div class="cs-box solutions">
                     <h3>Solutions</h3>
                     <ul>
-                        <li>PCB assembly (SMT & THT)</li>
-                        <li>Electronics box builds</li>
-                        <li>Cable harnessing & electromechanical assembly</li>
-                        <li>Enclosure integration and testing</li>
-                        <li>Functional testing, QA, and pilot production</li>
-                        <li>Low-to-medium volume manufacturing with scale-ready processes</li>
+                        <li>Rapid prototyping</li>
+                        <li>Right-sized MVP development</li>
+                        <li>Practical, manufacturable designs</li>
+                        <li>Cost-effective supply chain solutions</li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
 
             
 
@@ -397,8 +393,15 @@ document.getElementById('otpForm').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = `/download-pdf/?type=${data.product_type}`;  // Add product type to URL
-        } else {
+           const files = [
+        `/download-pdf/?type=pdf1`,
+        `/download-pdf/?type=pdf2`,
+        `/download-pdf/?type=pdf3`
+    ];
+            files.forEach(url => {
+        window.open(url, '_blank');
+    });
+        }  else {
             alert('Invalid OTP. Please try again.');
         }
     });

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactRequest, Referral
+from .models import CareerApplication, ContactRequest, Referral
 
 # Register your models here.
 
@@ -12,3 +12,4 @@ from .models import ContactRequest, Referral
 
 admin.site.register(ContactRequest)
 admin.site.register(Referral)
+admin.site.register(CareerApplication)

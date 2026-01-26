@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ContactForm, ReferralForm
+from .forms import ContactForm, ReferralForm, CareerApplicationForm
 import random
 from django.http import JsonResponse, FileResponse
 from django.core.mail import send_mail
@@ -57,6 +57,32 @@ def referral_view(request):
     
     return render(request, 'appp/referral.html', {'form': form})
 
+def careers_view(request):
+    if request.method == 'POST':
+        form = CareerApplicationForm(request.POST)
+        print("Career POST data:", request.POST) 
+        if form.is_valid():
+            print("Career Form is valid")
+            form.save()
+            messages.success(
+                request,
+                "Your application has been submitted successfully. We will contact you soon."
+            )
+            return redirect('careers')
+        else:
+            print("CAREER FORM ERRORS:", form.errors.as_data())
+            print("Career Form errors:", form.errors)  # Debug print
+            messages.error(request, "Please correct the errors below and try again")
+            
+    else:
+        form = CareerApplicationForm()
+
+    return render(request, 'appp/careers.html', {'form': form})
+def investor(request):
+    return render(request, 'appp/investor.html')
+def calculate_investor(request):
+    return render(request, 'appp/calculate_investor.html')
+
 
 def startup(request):
     return render(request, 'appp/startup.html')
@@ -67,8 +93,10 @@ def sme(request):
 def rnd(request):
     return render(request, 'appp/rnd.html')
 
-def referral(request):
-    return render(request, 'appp/referral.html')
+
+
+def careers(request):
+       return render(request, 'appp/careers.html') 
 
 def boxbuild (request):
     return render(request, 'appp/boxbuild.html')
@@ -117,8 +145,13 @@ def dustbin2(request):
 def rugged_display(request):
     return render(request,'appp/rugged_display.html')
 
+
+def inspectionduct_prod(request):
+    return render(request,'appp/inspectionduct_prod.html')
 def inspection_duct_crawler(request):
     return render(request,'appp/inspection_duct_crawler.html')
+def underwater_crawler(request):
+    return render(request,'appp/underwater_crawler.html')
 
 def intrusion_alarm_system(request):
     return render(request,'appp/intrusion_alarm_system.html')
@@ -181,13 +214,17 @@ def download_pdf(request):
     
     # Define PDF paths for different products
     pdf_paths = {
-        'dc_compressor': 'dc_compressor.pdf',
-        'industrial_cooling_distribution':'industrial_cooling_distribution.pdf',
-        'dustbin': 'dustbin.pdf',
-        'inspection_duct_crawler': 'inspection_duct_crawler.pdf',
-        'rugged_display': 'rugged_display.pdf',
-        'intrusion_alarm_system': 'intrusion_alarm_system.pdf',
-        'fire_and_safety': 'fire_and_safety.pdf'
+        # 'dc_compressor': 'dc_compressor.pdf',
+        # 'industrial_cooling_distribution':'industrial_cooling_distribution.pdf',
+        # 'dustbin': 'dustbin.pdf',
+        # 'inspection_duct_crawler': 'inspection_duct_crawler.pdf',
+        # 'rugged_display': 'rugged_display.pdf',
+        # 'intrusion_alarm_system': 'intrusion_alarm_system.pdf',
+        # 'fire_and_safety': 'fire_and_safety.pdf'
+
+        'pdf1':'company.pdf',
+        'pdf2':'kuvam.pdf',
+        'pdf3':'doc.pdf'
     }
     
     # Get the correct PDF filename

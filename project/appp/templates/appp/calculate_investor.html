@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuvam Proto Solutions – ROI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #020617;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    }
+    h1 {
+      text-align: center;
+      color: #facc15;
+    }
+    p.subtitle {
+      text-align: center;
+      color: #cbd5f5;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    label {
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+    .btn {
+      grid-column: span 2;
+      background: #facc15;
+      color: #020617;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .results {
+      margin-top: 30px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .results h2 {
+      color: #22c55e;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+    .note {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Investor ROI Calculator</h1>
+    <p class="subtitle">Estimate indicative returns from Kuvam Proto Solutions' asset-backed debt investment</p>
+
+    <div class="grid">
+      <div>
+        <label>Investment Amount (₹)</label>
+        <input type="number" id="amount" value="500000" />
+      </div>
+      <div>
+        <label>Tenure (Months)</label>
+        <select id="months">
+          <option value="6">6 Months</option>
+          <option value="12" selected>12 Months</option>
+          <option value="18">18 Months</option>
+          <option value="24">24 Months</option>
+        </select>
+      </div>
+      <div>
+        <label>Indicative Monthly Return (%)</label>
+        <select id="rate">
+          <option value="2">2%</option>
+          <option value="2.5" selected>2.5%</option>
+          <option value="3">3%</option>
+        </select>
+      </div>
+      <div>
+        <label>Payout Type</label>
+        <select id="payout">
+          <option value="monthly">Monthly Payout</option>
+          <option value="maturity">At Maturity</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="calculateROI()">Calculate Returns</button>
+    </div>
+
+    <div class="results" id="results" style="display:none;">
+      <h2>Estimated Returns</h2>
+      <div class="result-row"><span>Total Invested</span><span id="rInvested"></span></div>
+      <div class="result-row"><span>Monthly Payout</span><span id="rMonthly"></span></div>
+      <div class="result-row"><span>Total Interest Earned</span><span id="rInterest"></span></div>
+      <div class="result-row"><span>Total Value</span><span id="rTotal"></span></div>
+    </div>
+
+    <div class="note">
+      Disclaimer: This calculator shows indicative estimates only. Returns are business-linked and not guaranteed. This is a private debt investment and not a public deposit or regulated financial product. Please review documentation and consult your advisor before investing.
+    </div>
+  </div>
+
+  <script>
+    function calculateROI() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const months = parseInt(document.getElementById('months').value);
+      const rate = parseFloat(document.getElementById('rate').value) / 100;
+      const payout = document.getElementById('payout').value;
+
+      const monthlyInterest = amount * rate;
+      const totalInterest = monthlyInterest * months;
+      const totalValue = amount + totalInterest;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('rInvested').innerText = '₹ ' + amount.toLocaleString('en-IN');
+      document.getElementById('rMonthly').innerText = payout === 'monthly' ? '₹ ' + monthlyInterest.toLocaleString('en-IN') : '—';
+      document.getElementById('rInterest').innerText = '₹ ' + totalInterest.toLocaleString('en-IN');
+      document.getElementById('rTotal').innerText = '₹ ' + totalValue.toLocaleString('en-IN');
+    }
+  </script>
+</body>
+</html>

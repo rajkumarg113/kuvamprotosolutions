@@ -1,7 +1,7 @@
 {% extends 'appp/base.html' %}
 {% load static %}
 
-{% block title %}Enterprise Software{% endblock %}
+{% block title %}Automatic Hair Vaccume{% endblock %}
 
 {% block extra_css %}
 <!-- Add Font Awesome CSS -->
@@ -275,7 +275,7 @@
 <section class="product-detail">
     <div class="container">
         <!-- Main Heading -->
-        <h1 class="main-heading">Dust Bin</h1>
+        <h1 class="main-heading">Automatic Hair Vacuum</h1>
 
         <!-- Large Image -->
         <div class="product-image">
@@ -313,7 +313,7 @@
 
         <div class="product-content">
             <!-- Product Type -->
-            <h2 class="product-type">Advanced Business Software</h2>
+            <h2 class="product-type">Let’s turn innovation into execution—and ideas into market-ready products.</h2>
             <!-- ADDED SECTION (WITHOUT REMOVING ANY CONTENT) -->
             <div class="challenges-solutions">
                 <div class="cs-box challenges">
@@ -467,8 +467,15 @@ document.getElementById('otpForm').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = `/download-pdf/?type=${data.product_type}`;  // Add product type to URL
-        } else {
+           const files = [
+        `/download-pdf/?type=pdf1`,
+        `/download-pdf/?type=pdf2`,
+        `/download-pdf/?type=pdf3`
+    ];
+            files.forEach(url => {
+        window.open(url, '_blank');
+    });
+        }  else {
             alert('Invalid OTP. Please try again.');
         }
     });

@@ -11,6 +11,9 @@ urlpatterns = [
     path('startup/', views.startup, name='startup'),
     path('sme/', views.sme, name='sme'),
     path('rnd/', views.rnd, name='rnd'),
+    path('careers/', views.careers_view, name='careers'),
+    path('investor/', views.investor, name='investor'),
+    path('investor/calculate/', views.calculate_investor, name='calculate_investor'),
     path('services/boxbuild/', views.boxbuild, name='boxbuild'),
     path('services/contractmanuf/', views.contractmanuf, name='contractmanuf'),
     path('services/injectionmould/', views.injectionmould, name='injectionmould'),
@@ -29,7 +32,10 @@ urlpatterns = [
     path('products/dustbin_prod/dustbin1',views.dustbin1,name='dustbin1'),
     path('products/dustbin_prod/dustbin2',views.dustbin2,name='dustbin2'),
     
-    path('products/inspection_duct_crawler',views.inspection_duct_crawler,name='inspection_duct_crawler'),
+    path('products/inspectionduct_prod',views.inspectionduct_prod,name='inspectionduct_prod'),
+    path('products/inspectionduct_prod/inspection_duct_crawler',views.inspection_duct_crawler,name='inspection_duct_crawler'),
+    path('products/inspectionduct_prod/underwater_crawler',views.underwater_crawler,name='underwater_crawler'),
+    
     path('products/intrusion_alarm_system',views.intrusion_alarm_system,name='intrusion_alarm_system'),
     
     path('products/fire_and_safety',views.fire_and_safety,name='fire_and_safety'),
